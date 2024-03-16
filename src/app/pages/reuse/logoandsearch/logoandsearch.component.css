@@ -1,0 +1,16 @@
+@keyframes border-animation {
+     0% {
+         border-color: transparent;
+     }
+     50% {
+          border-color: rgb(221, 10, 221); /* Change to the color you desire */
+     }
+     100% {
+         border-color: transparent;
+     }
+ }
+ 
+ .animation-border {
+     animation: border-animation 1.5s infinite;
+ }
+ 

@@ -1,0 +1,57 @@
+
+<div class="bg-black h-[100vh]  w-[100%]">
+     <div class="flex justify-center gap items-center  w-[80%] mx-auto">
+     
+       <div class=" text-white bg-black  hidden md:block mx-3">
+         <h1 class="text-6xl font-bold uppercase tracking-wide">
+
+          Create your own event
+        
+         </h1>
+        </div>
+     <div class=" parent flex  flex-col sm:flex-row   justify-center items-center w-[100%]  ">
+       <div class="relative flex flex-col justify-center items-center ">
+         <div class="ring w-[500px] h-[500px] sm:w-[400px] sm:h-[400px] md:w-[350px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
+           <i style="--clr:#00ff0a;"></i>
+           <i style="--clr:#ff0057;"></i>
+           <i style="--clr:#fffd44;"></i>
+         </div>
+
+
+         <div *ngIf="showLoginForm" class="login mt-2">
+          <h2>Login</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+            <div class="inputBx">
+              <input type="text" placeholder="Username" formControlName="username">
+            </div>
+            <div class="inputBx">
+              <input type="password" placeholder="Password" formControlName="password">
+            </div>
+
+            <div class="flex justify-center">
+            <button type="submit" 
+            class="bg-gradient-to-br from-purple-600 to-blue-500 text-white rounded-lg px-5 py-2.5 text-sm focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+              Purple to Blue
+             </button>
+            </div>
+            <div class="inputBx">
+              <button type="submit" [disabled]="!loginForm.valid">Sign in</button>
+            </div>
+          </form>
+          <div class="links">
+            <a routerLink="/signup">Sign Up</a>
+            <a href="#">Forget Password</a>
+          </div>
+        </div>
+        
+       </div>
+     </div>
+     </div>
+     </div>
+     
+     
+     
+     
+     
+     
+     
