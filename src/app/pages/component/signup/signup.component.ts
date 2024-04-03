@@ -9,8 +9,11 @@ import { AuthserviceService } from '../../../core/service/auth/authservice.servi
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+
+  
   signUpForm!: FormGroup;
   otpForm!:FormGroup;
+  
   otp: string = '';
   email: string = '';
   showOtpForm: boolean = false;

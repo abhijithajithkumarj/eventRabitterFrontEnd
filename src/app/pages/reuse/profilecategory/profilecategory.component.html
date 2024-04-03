@@ -1,0 +1,80 @@
+
+<div>
+    <app-navigation></app-navigation>
+</div>
+<div>
+    <app-logoandsearch></app-logoandsearch>
+</div>
+
+
+<div class="relative flex min-h-0  justify-center flex-wrap gap-3 overflow-hidden bg-black py-6 sm:py-12 rabbit-font mt-24">
+
+    <div class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+         <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-purple-700 transition-all duration-300 group-hover:scale-[10]"></span>
+         <div class="relative z-10 mx-auto max-w-md">
+             <span class="grid h-20 w-20 place-items-center rounded-full bg-purple-700  transition-all duration-300 group-hover:bg-purple-700 ">
+                <i class="fa-solid fa-person-rays text-3xl text-white"></i>
+             </span>
+             <div
+                 class="space-y-6 pt-5 text-base leading-7 text-black transition-all duration-300 group-hover:text-white/90">
+                 <p class=" text-3xl font-bold">
+                    Register your individual profile here now!</p>
+             </div>
+             <div class="pt-5 text-base font-semibold leading-7">
+                 <p>
+                     <a routerLink="/form" [queryParams]="{ name: 'showIndividual' }" class="text-sky-500 transition-all duration-300 group-hover:text-white">Ready to go Register</a>
+                 </p>
+             </div>
+         </div>
+     </div>
+
+
+     <div
+     class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+     <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-green-950 transition-all duration-300 group-hover:scale-[10]"></span>
+     <div class="relative z-10 mx-auto max-w-md">
+         <span class="grid h-20 w-20 place-items-center rounded-full bg-green-950 transition-all duration-300 group-hover:bg-green-950 ">
+
+            <i class="fa-solid fa-tent-arrow-left-right  text-3xl text-white "></i>
+        
+         </span>
+         <div
+             class="space-y-6 pt-5 text-base leading-7 text-black transition-all duration-300 group-hover:text-white/90">
+             <p class="text-3xl font-bold">Open registration for event spaces now</p>
+         </div>
+         <div class="pt-5 text-base font-semibold leading-7">
+             <p>
+                 <a routerLink="/form" [queryParams]="{ name: 'showEventPlace' }" class="text-sky-500 transition-all duration-300 group-hover:text-white">Ready to go Register
+                     &rarr;
+                 </a>
+             </p>
+         </div>
+     </div>
+ </div>
+
+
+ <div
+ class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+ <span class="absolute top-10 z-0 h-20 w-20 rounded-full bg-red-950 transition-all duration-300 group-hover:scale-[10]"></span>
+ <div class="relative z-10 mx-auto max-w-md">
+     <span class="grid h-20 w-20 place-items-center rounded-full bg-red-950 transition-all duration-300 group-hover:bg-red-950">
+        <i class="fa-solid fa-users-between-lines text-3xl text-white"></i>
+     </span>
+     <div
+                 class="space-y-6 pt-5 text-base leading-7 text-black transition-all duration-300 group-hover:text-white/90">
+                 <p class=" text-3xl font-bold">
+                    Register your team profile here now!</p>
+             </div>
+     <div class="pt-5 text-base font-semibold leading-7">
+         <p>
+             <a routerLink="/form" [queryParams]="{ name: 'showTeam' }" class="text-sky-500 transition-all duration-300 group-hover:text-white">Ready to go Register
+                 &rarr;
+             </a>
+         </p>
+     </div>
+ </div>
+</div>
+
+
+ </div>
+

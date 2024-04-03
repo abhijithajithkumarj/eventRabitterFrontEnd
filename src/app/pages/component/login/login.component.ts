@@ -38,6 +38,7 @@ export class LoginComponent {
           if(response.role==="USER"){
             this.router.navigateByUrl('home')
           }
+          
           if(response.role==="ADMIN"){
             this.router.navigateByUrl('adimdashbord')
 

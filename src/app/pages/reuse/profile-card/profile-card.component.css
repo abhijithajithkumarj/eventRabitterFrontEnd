@@ -89,9 +89,9 @@ body {
 .card-holder > .card > .content-container > .content {
   height: 60px;
   display: flex; 
-  flex-direction: column; /* Elements stack vertically */
-  justify-content: center; /* Centered vertically */
-  align-items: flex-start; /* Aligned left horizontally */
+  flex-direction: column; 
+  justify-content: end; 
+  align-items: flex-start;
   position: absolute;
   top: 0;
   left: 0;
@@ -117,10 +117,15 @@ body {
 }
 
 .card-holder > .card > .content-container > .content > h1 {
+  font-family: "Kode Mono", monospace;
   font-size: 18px;
   transform: translateY(-2px);
 }
 
 .card-holder > .card > .content-container > .content > p {
+  font-family: "Kode Mono", monospace;
   font-size: 14px;
 }
+
+
+

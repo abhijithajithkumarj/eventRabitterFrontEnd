@@ -1,11 +1,36 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
-     font-family: "Kode Mono", monospace;
-     background-color: black;
 
+
+
+:root {
+  --prime_color: #00894d;
+  --background-dark: #2d3548;
+  --text-light: rgba(255,255,255,0.6);
+  --text-lighter: rgba(255,255,255,0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
+}
+
+body { 
+ 
+  background-color: black;
+}
+
+
+/* background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234)); */
+
+.rabbit-font {
+  font-family: "Kode Mono", monospace;
 }

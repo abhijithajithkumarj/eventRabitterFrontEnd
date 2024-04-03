@@ -1,4 +1,5 @@
 
+
 .parent {
   
      min-height: 100vh;
@@ -109,4 +110,16 @@
      color: #fff;
      text-decoration: none;
    }
+   .event-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: "rabbit-font";
+  }
+  
+  .event-title::after {
+    content: "\00a0\00a0\00a0\00a0"; 
+    white-space: pre;
+  }
+  
    

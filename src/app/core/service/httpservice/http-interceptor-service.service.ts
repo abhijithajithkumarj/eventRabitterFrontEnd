@@ -40,7 +40,8 @@ export class HttpInterceptorServiceService implements HttpInterceptor {
       tap(
       (event) => {
         if (event.type === HttpEventType.Response && event.status === 200) {
-          const { token } = event.body;
+          const { token,user } = event.body;
+
 
           if (token) {
             this.authService.setTokenLocalStorage(token);
@@ -48,8 +49,16 @@ export class HttpInterceptorServiceService implements HttpInterceptor {
               setHeaders: {
                 Authorization: `Bearer ${token}`,
               },
+
             });
           }
+          if(user){
+            this.authService.setUserIdInLocalStorage(user);
+          }
+          else{
+            console.log("user not found");
+          }
+          
         }
       },
       catchError((error)=>{
