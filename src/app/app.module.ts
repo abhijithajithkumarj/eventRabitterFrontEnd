@@ -12,7 +12,7 @@ import { FooterComponent } from './pages/reuse/footer/footer.component';
 import { ClubcardComponent } from './pages/reuse/clubcard/clubcard.component';
 import { ProfileCardComponent } from './pages/reuse/profile-card/profile-card.component';
 import { FormComponent } from './pages/reuse/form/form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './pages/component/signup/signup.component';
@@ -34,6 +34,12 @@ import { VerificationProfileComponent } from './pages/component/admin/verificati
 import { ProfilecategoryComponent } from './pages/reuse/profilecategory/profilecategory.component';
 import { TestCompComponent } from './test/test-comp/test-comp.component';
 import { VerificationComponent } from './pages/component/admin/verification/verification.component';
+import { ChatAppComponent } from './core/chat-app/chat-app.component';
+import { BackgroundComponent } from './shared/background/background.component';
+import { EventTypeComponent } from './pages/reuse/event-type/event-type.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
 
 
 
@@ -62,6 +68,10 @@ import { VerificationComponent } from './pages/component/admin/verification/veri
     ProfilecategoryComponent,
     TestCompComponent,
     VerificationComponent,
+    ChatAppComponent,
+    BackgroundComponent,
+    EventTypeComponent,
+    SetUpEventComponent,
 
     
 
@@ -83,7 +93,10 @@ import { VerificationComponent } from './pages/component/admin/verification/veri
     BrowserModule,
     NgxPaginationModule,
  
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    FormsModule,
+    MatCardModule,
+    MatListModule
    
   ],
   providers: [

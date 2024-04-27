@@ -1,0 +1,36 @@
+
+<app-navigation></app-navigation>
+<div class="flex items-center justify-center p-12">
+    <div class="mx-auto w-full max-w-[550px] bg-white">
+
+
+      <form [formGroup]="eventForm">
+        <div class="mb-5">
+          <label for="eventName">Event Name</label>
+          <input type="text" formControlName="eventName" id="eventName" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+        </div>
+        <div class="mb-5">
+            <label for="eventName">placeName</label>
+            <input type="text" formControlName="placeName" id="placeName" class="w-full rounded-md border  bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+          </div>
+          <div class="mb-5">
+            <label for="eventName">peopleCapacityOfEvent</label>
+            <input type="text" formControlName="peopleCapacityOfEvent" id="peopleCapacityOfEvent" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+          </div>
+          <div class="mb-5">
+            <label for="eventName">priceOfBasieTicket</label>
+            <input type="text" formControlName="priceOfBasieTicket" id="priceOfBasieTicket" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+          </div>
+          <div class="mb-5">
+            <label for="eventName">priceOfDeluxeTicket</label>
+            <input type="text" formControlName="priceOfDeluxeTicket" id="priceOfDeluxeTicket" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+          </div>
+            <div class="mb-5">
+            <label for="eventName">priceOfPremiumTicket</label>
+            <input type="text" formControlName="priceOfPremiumTicket" id="priceOfPremiumTicket" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+          </div>
+        <button type="button" class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none" (click)="submitForm()"></button>
+      </form>
+    </div>
+  </div>
+  

@@ -27,13 +27,7 @@ export class VerificationProfileComponent implements OnInit{
 
 
   accepUserId(id:string) {
-    console.log(id);
-    
     this.service.addVerification(id).subscribe(()=>{})
   }
   
-
-
-
-
 }

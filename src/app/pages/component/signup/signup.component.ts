@@ -34,7 +34,7 @@ export class SignupComponent {
         username: ['', Validators.required],
         password: ['', Validators.required ],
         confirmPassword: ['', Validators.required],
-        phoneNumber: ['', Validators.required],
+        phoneNumber: ['',  [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         email: ['', [Validators.required, Validators.email]],
       },
       {
@@ -76,7 +76,6 @@ export class SignupComponent {
         userEmail: this.signUpForm.value.email,
         otp: this.otpForm.value.otp,
       };
-  
       this.service.otpVerification(otpVerificationData).subscribe(
         (result: boolean) => {
           console.log('OTP verification result:', result);
@@ -93,8 +92,7 @@ export class SignupComponent {
         }
       );
     } else {
-      console.error('OTP form is invalid.');
-      
+      console.error('OTP form is invalid.'); 
     }
   }
   
@@ -111,4 +109,7 @@ export class SignupComponent {
     }
     return null;
   }
+
+
+  
 }

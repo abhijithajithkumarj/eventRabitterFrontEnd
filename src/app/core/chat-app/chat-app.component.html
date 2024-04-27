@@ -1,0 +1,25 @@
+<div class="flex flex-col h-screen p-4">
+    <div class="card h-screen p-4">
+        <div class="flex-grow">
+            <div *ngFor="let message of greetings; let i = index" class="container mb-2 flex">
+                <div *ngIf="myGreetings[i]" class="bg-slate-100 text-black p-2 w-11/12 flex flex-row justify-end rounded">
+                    <p><b>{{ message }}</b></p>
+                </div>
+                <div *ngIf="!myGreetings[i]" class="bg-blue-500 text-white p-2 flex flex-row justify-start rounded">
+                    <p><b>{{ message }}</b></p>
+                </div>
+            </div>
+        </div>
+
+        <form #loginForm="ngForm" class="flex items-end p-4 mb-4">
+            <div class="flex-1">
+                <textarea autocomplete="off" placeholder="Type Your Message..." name="newmessage"
+                    [(ngModel)]="newmessage" required class="w-full border p-2 rounded"></textarea>
+            </div>
+
+            <button  class="btn btn-primary ml-2 mb-3m text-white" (click)="sendMessage()" [disabled]="!loginForm.valid">
+                Send
+            </button>
+        </form>
+    </div>
+</div>

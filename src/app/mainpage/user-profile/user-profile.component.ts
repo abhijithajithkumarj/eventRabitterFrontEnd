@@ -8,8 +8,14 @@ import { AuthserviceService } from '../../core/service/auth/authservice.service'
   styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
+chat() {
+throw new Error('Method not implemented.');
+}
+
 
   userProfile: UserProfile | null = null;
+  notification:any[]=[];
+  creatorName:string
 
 
   userId!: string;
@@ -18,6 +24,7 @@ export class UserProfileComponent {
   ngOnInit(): void {
     this.userId=this.service.getUserFromLocalStorage();
     this.getUserProfile();  
+    this.getNotifications();
   }
 
   
@@ -43,6 +50,27 @@ export class UserProfileComponent {
       }
     );
   }
+
+  getNotifications(): void {
+    this.service.getNotifications(this.userId).subscribe((data)=>{
+      this.notification = data;        
+      console.log(this.notification);
+    })
+  }
+
+  rejectEvent(id:string){
+    console.log("test");
+    const notificationType="EVENT_REJECTED"
+    this.service.eventNotificationReaction(id, notificationType).subscribe((data)=>{
+      console.log(data);
+    })
+   }
+
+
+  
+
+
+
 
 
 }
