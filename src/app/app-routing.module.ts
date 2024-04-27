@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { EventType, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/component/login/login.component';
 import { HomeComponent } from './mainpage/home/home.component';
 import { FormComponent } from './pages/reuse/form/form.component';
@@ -14,9 +14,15 @@ import { ListOfcategoryComponent } from './pages/component/admin/list-ofcategory
 import { VerificationProfileComponent } from './pages/component/admin/verification-profile/verification-profile.component';
 import { ProfilecategoryComponent } from './pages/reuse/profilecategory/profilecategory.component';
 import { TestCompComponent } from './test/test-comp/test-comp.component';
+import { ChatAppComponent } from './core/chat-app/chat-app.component';
+import { BackgroundComponent } from './shared/background/background.component';
+import { EventTypeComponent } from './pages/reuse/event-type/event-type.component';
+import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
 
-const routes: Routes = [
-  {path:'',redirectTo:'verificationProfile', pathMatch: 'full'},
+const routes: Routes =
+[
+
+  {path:'',redirectTo:'home', pathMatch: 'full'},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'home',component:HomeComponent,},
@@ -31,8 +37,11 @@ const routes: Routes = [
   {path:'listofcategory',component:ListOfcategoryComponent},
   {path:'verificationProfile',component:VerificationProfileComponent},
   {path:'profileCategory',component:ProfilecategoryComponent},
- 
-
+  {path:'chat',component:ChatAppComponent},
+  {path:'background',component:BackgroundComponent},
+  {path:'eventType',component:EventTypeComponent},
+  {path:'EventSetUp',component:SetUpEventComponent},
+  
 ];
 
 @NgModule({

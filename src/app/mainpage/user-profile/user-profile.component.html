@@ -1,22 +1,25 @@
+<div>
+  <app-navigation></app-navigation>
+</div>
 <div class='relative rabbit-font'>
   <div class='grid grid-cols-2 h-[100vh]'>
-    <div class='bg-'>
-      <div class=' w-[80%] mx-auto flex flex-col gap-8   mt-8 text-white'   *ngIf="userProfile">
+    <div class='bg-black'>
+      <div class=' w-[80%] mx-auto flex flex-col gap-8   mt-8 text-white' *ngIf="userProfile">
         <div class='px-2' style="border-left: 3px solid rgb(208, 0, 250)">
           <h1 class="text-2xl"> {{ userProfile.username }} {{ userProfile.firstName }}
 
             <i class="fa-solid fa-certificate" *ngIf="userProfile.profileVerification === true"></i>
 
-          
 
-             </h1>
+
+          </h1>
           <p> {{ userProfile.description }}</p>
           <p> {{ userProfile.phoneNumber }}</p>
 
           <div>
             <i class="fa-sharp fa-solid fa-comments"></i>
           </div>
-          
+
         </div>
         <br>
         <br>
@@ -31,7 +34,7 @@
               <p class="px-4 py-2">{{ userProfile.phoneNumber }}</p>
             </div>
             <div style="border: 2px solid rgb(208, 0, 250); border-radius: 15px;">
-          
+
             </div>
           </div>
 
@@ -42,45 +45,60 @@
       <div class=''>
         <h1 class="text-2xl text-white">Notification</h1>
 
-        <div class='flex items-center gap-2'>
-          <img src="https://hips.hearstapps.com/hmg-prod/images/lady-gaga-attends-netflixs-maestro-los-angeles-photo-call-news-photo-1707081486.jpg" alt="" class='w-[60px] h-[60px] rounded-lg' />
+        <div class='flex items-center gap-2' *ngFor="let noti of notification ">
+          <img
+            src="https://hips.hearstapps.com/hmg-prod/images/lady-gaga-attends-netflixs-maestro-los-angeles-photo-call-news-photo-1707081486.jpg"
+            alt="" class='w-[60px] h-[60px] rounded-lg' />
           <div class="flex items-center gap-2 p-1 rounded-lg text-white border-2 border-black">
-              <p class="text-sm">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In reiciendis quisquam repellat debitis? Odit, deleniti?</p>
-              <i class="fa-solid fa-users-line text-3xl text-black"></i> 
-              <i class="fa-solid fa-message text-3xl text-black"></i> 
+            <p class="text-sm"> Request Sent Event new {{noti.id}} </p>
+            
+
+            <i [routerLink]="'/chat'"  class="fa-solid fa-message text-3xl text-black"></i>
           </div>
-       </div>
-        <button class='w-full bg-black py-1 mt-2 text-white' style="border-radius: 5px">Accept the event</button>
+          <button class='w-full bg-black py-1 mt-2 text-white'
+            style="border-radius: 5px; height: 70px; width:100px;">Accept the event</button>
+
+
+          <button type="button"
+            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            (click)="rejectEvent(noti.id)">Verification</button>
+
+
+
+        </div>
+
+
       </div>
 
-      
 
 
 
 
 
 
-      
+
+
     </div>
 
   </div>
 
-<div class='absolute inset-0  flex justify-center mt-10'>
-<div class="flex flex-col gap-4">
+  <div class='absolute inset-0  flex justify-center mt-10'>
+    <div class="flex flex-col gap-4">
 
-<div class='rounded-lg '>
-<img src="https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg" alt="" class='object-cover rounded-lg w-[180px] h-[150px]'/>
-</div>
-<div class="text-white flex gap-5">
-  
-  <i class="fa-brands fa-wpexplorer text-3xl"></i>
-  <i class="fa-brands fa-battle-net text-3xl"></i>
-  <i class="fa-solid fa-note-sticky text-3xl text-black"></i>
-  <i class="fa-solid fa-ghost  text-3xl text-black"></i>
-</div>
+      <div class='rounded-lg '>
+        <img src="https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg" alt=""
+          class='object-cover rounded-lg w-[180px] h-[150px]' />
+      </div>
+      <div class="text-white flex gap-5">
 
-</div>
+        <i class="fa-brands fa-wpexplorer text-3xl"></i>
+        <i class="fa-brands fa-battle-net text-3xl"></i>
+        <i class="fa-solid fa-note-sticky text-3xl text-black"></i>
+        <i class="fa-solid fa-ghost  text-3xl text-black"></i>
+      </div>
+
+    </div>
 
 
- 
-</div>
+
+  </div>

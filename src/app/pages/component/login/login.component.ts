@@ -15,7 +15,14 @@ export class LoginComponent {
 
   showLoginForm: boolean = true;
 
-  constructor(private fb: FormBuilder , private router:Router, private service:AuthserviceService) { }
+ 
+  constructor(
+    private fb: FormBuilder 
+    , private router:Router, 
+    private service:AuthserviceService,
+    
+  
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -41,8 +48,8 @@ export class LoginComponent {
           
           if(response.role==="ADMIN"){
             this.router.navigateByUrl('adimdashbord')
-
           }
+          
          
           console.log(response);
         },
