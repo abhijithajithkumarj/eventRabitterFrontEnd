@@ -32,7 +32,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AddListComponent } from './pages/component/admin/add-list/add-list.component';
 import { VerificationProfileComponent } from './pages/component/admin/verification-profile/verification-profile.component';
 import { ProfilecategoryComponent } from './pages/reuse/profilecategory/profilecategory.component';
-import { TestCompComponent } from './test/test-comp/test-comp.component';
 import { VerificationComponent } from './pages/component/admin/verification/verification.component';
 import { ChatAppComponent } from './core/chat-app/chat-app.component';
 import { BackgroundComponent } from './shared/background/background.component';
@@ -40,6 +39,7 @@ import { EventTypeComponent } from './pages/reuse/event-type/event-type.componen
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
+import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.component';
 
 
 
@@ -65,21 +65,14 @@ import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.compon
     ListOfcategoryComponent,
     AddListComponent,
     VerificationProfileComponent,
-    ProfilecategoryComponent,
-    TestCompComponent,
     VerificationComponent,
     ChatAppComponent,
     BackgroundComponent,
     EventTypeComponent,
     SetUpEventComponent,
-
-    
-
+    ProfilecategoryComponent,
+    SeatSelectorComponent
    
- 
-
-   
-    
   ],
   imports: [
     BrowserModule,

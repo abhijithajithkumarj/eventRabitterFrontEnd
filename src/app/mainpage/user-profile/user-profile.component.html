@@ -1,6 +1,4 @@
-<div>
-  <app-navigation></app-navigation>
-</div>
+
 <div class='relative rabbit-font'>
   <div class='grid grid-cols-2 h-[100vh]'>
     <div class='bg-black'>
@@ -42,30 +40,24 @@
       </div>
     </div>
     <div class=' flex justify-center items-center px-10' style="background-color:rgb(208, 0, 250) ;">
+      
       <div class=''>
         <h1 class="text-2xl text-white">Notification</h1>
 
-        <div class='flex items-center gap-2' *ngFor="let noti of notification ">
+        <!-- <div class='flex items-center gap-2' *ngFor="let noti of notification ">
           <img
             src="https://hips.hearstapps.com/hmg-prod/images/lady-gaga-attends-netflixs-maestro-los-angeles-photo-call-news-photo-1707081486.jpg"
             alt="" class='w-[60px] h-[60px] rounded-lg' />
           <div class="flex items-center gap-2 p-1 rounded-lg text-white border-2 border-black">
             <p class="text-sm"> Request Sent Event new {{noti.id}} </p>
-            
-
             <i [routerLink]="'/chat'"  class="fa-solid fa-message text-3xl text-black"></i>
           </div>
           <button class='w-full bg-black py-1 mt-2 text-white'
             style="border-radius: 5px; height: 70px; width:100px;">Accept the event</button>
-
-
           <button type="button"
             class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             (click)="rejectEvent(noti.id)">Verification</button>
-
-
-
-        </div>
+        </div> -->
 
 
       </div>

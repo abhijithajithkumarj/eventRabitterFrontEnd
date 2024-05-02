@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestCompComponent } from './test-comp.component';
+import { SeatSelectorComponent } from './seat-selector.component';
 
-describe('TestCompComponent', () => {
-  let component: TestCompComponent;
-  let fixture: ComponentFixture<TestCompComponent>;
+describe('SeatSelectorComponent', () => {
+  let component: SeatSelectorComponent;
+  let fixture: ComponentFixture<SeatSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TestCompComponent]
+      declarations: [SeatSelectorComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(TestCompComponent);
+    fixture = TestBed.createComponent(SeatSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

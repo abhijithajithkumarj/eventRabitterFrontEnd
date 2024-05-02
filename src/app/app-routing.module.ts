@@ -13,16 +13,15 @@ import { PlaceAutocompleteComponent } from './pages/reuse/place-autocomplete/pla
 import { ListOfcategoryComponent } from './pages/component/admin/list-ofcategory/list-ofcategory.component';
 import { VerificationProfileComponent } from './pages/component/admin/verification-profile/verification-profile.component';
 import { ProfilecategoryComponent } from './pages/reuse/profilecategory/profilecategory.component';
-import { TestCompComponent } from './test/test-comp/test-comp.component';
 import { ChatAppComponent } from './core/chat-app/chat-app.component';
 import { BackgroundComponent } from './shared/background/background.component';
 import { EventTypeComponent } from './pages/reuse/event-type/event-type.component';
 import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
+import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.component';
 
 const routes: Routes =
 [
-
-  {path:'',redirectTo:'home', pathMatch: 'full'},
+  {path:'',redirectTo:'seate', pathMatch: 'full'},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'home',component:HomeComponent,},
@@ -41,6 +40,7 @@ const routes: Routes =
   {path:'background',component:BackgroundComponent},
   {path:'eventType',component:EventTypeComponent},
   {path:'EventSetUp',component:SetUpEventComponent},
+  {path:'seate',component:SeatSelectorComponent},
   
 ];
 
