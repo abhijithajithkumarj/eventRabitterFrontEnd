@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap");
+
+
+
+img {
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+.parent {
+  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(85, 85, 215), rgb(155, 38, 38));
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Urbanist", sans-serif;
+  gap: 4em;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 3rem clamp(1rem, 5%, 3rem);
+}
+
+
+.card {
+  padding: 3.5em 2em 2em;
+  width: 300px;
+  background: #fffefe;
+  position: relative;
+  border-radius: 10px; /* Adjust the value to change the curvature */
+  border: 1px solid black; /* Add a 1px solid black border */
+  box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+}
+
+
+.card .rectangle {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 50px;
+  background: #ff000091;
+  height: 10px;
+
+  border-radius: 50px;
+}
+
+.card-content {
+  padding-top: 7.2em;
+}
+
+.card-content h2 {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.35em;
+  font-weight: 700;
+}
+
+.card-content p {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.card-img {
+  position: relative;
+}
+
+.card-img-overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.card-img-overlay p {
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: grid;
+  place-items: center;
+  padding: 0.9em;
+  text-align: center;
+  position: relative;
+  top: 100%;
+  min-width: 85px;
+  min-height: 85px;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+
+.card .card-img-overlay {
+     background: rgba(4, 255, 0, 0.532);
+   }
+   
+   .card .card-img-overlay p {
+     background: rgb(9, 111, 5);
+   }
+   

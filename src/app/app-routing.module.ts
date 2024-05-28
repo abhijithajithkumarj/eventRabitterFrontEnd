@@ -18,10 +18,20 @@ import { BackgroundComponent } from './shared/background/background.component';
 import { EventTypeComponent } from './pages/reuse/event-type/event-type.component';
 import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
 import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.component';
+import { NotificationComponent } from './pages/reuse/notification/notification.component';
+import { EventTicketComponent } from './mainpage/event-ticket/event-ticket.component';
+import { TicketListComponent } from './pages/reuse/ticket-list/ticket-list.component';
+import { NotFoundComponent } from './pages/reuse/not-found/not-found.component';
+import { TicketBuyingComponent } from './mainpage/ticket-buying/ticket-buying.component';
+import { EventRegistreationComponent } from './pages/reuse/event-registreation/event-registreation.component';
+import { EventCreateDetailsComponent } from './pages/reuse/event-create-details/event-create-details.component';
+import { EventBookingPageCardsComponent } from './pages/event-booking-page-cards/event-booking-page-cards.component';
+import { ChartOfEventRabbiterComponent } from './pages/chart-of-event-rabbiter/chart-of-event-rabbiter.component';
+import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/event-web-guidelines.component';
 
 const routes: Routes =
 [
-  {path:'',redirectTo:'seate', pathMatch: 'full'},
+  {path:'',redirectTo:'chat', pathMatch: 'full'},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'home',component:HomeComponent,},
@@ -30,7 +40,7 @@ const routes: Routes =
   {path:'clubcard',component:ClubcardComponent},
   {path:'adimdashbord',component:AdminDashbordComponent},
   {path:'userpage',component:UserProfileComponent},
-  {path:'usergallery',component:UserGalleryComponent},
+  {path:'notification',component:NotificationComponent},
   {path: 'gmap',component:PlaceAutocompleteComponent},
   {path:'form',component:FormComponent},
   {path:'listofcategory',component:ListOfcategoryComponent},
@@ -41,6 +51,15 @@ const routes: Routes =
   {path:'eventType',component:EventTypeComponent},
   {path:'EventSetUp',component:SetUpEventComponent},
   {path:'seate',component:SeatSelectorComponent},
+  {path:'eventTicket',component:EventTicketComponent},
+  {path:'ticketList',component:TicketListComponent},
+  {path:'notFount',component:NotFoundComponent},
+  {path:'buyingPlace',component:TicketBuyingComponent},
+  {path:'registration',component:EventRegistreationComponent},
+  {path:'eventCreateDetails',component:EventCreateDetailsComponent},
+  {path:'eventTicketPlace',component:EventBookingPageCardsComponent},
+  {path:'eventChart',component:ChartOfEventRabbiterComponent},
+  {path:'eventwebGuidelines',component:EventWebGuidelinesComponent},
   
 ];
 

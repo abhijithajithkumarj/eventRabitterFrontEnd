@@ -1,0 +1,35 @@
+<div class="py-10 flex flex-col gap-4 bg-slate-950 h-full">
+    <div class="md:text-4xl sm:text-3xl xs:text-2xl text-center font-serif font-extrabold border-b-2 dark:border-red-500 text-white">
+        Notifications
+    </div>
+  
+    <ng-container *ngFor="let noti of notification">
+        <ng-container *ngIf="noti.t2.notificationType !== 'EVENT_REJECTED'  && noti.t2.notificationType !== 'EVENT_CONFORM'">
+            <div class="sm:w-[70%] xs:w-[94%] mx-auto p-4 rounded-3xl flex sm:gap-4 xs:gap-2 items-center justify-center"
+                style="background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
+                <img [src]="noti.t1.imageUrl" alt="profile"
+                    class="w-[5rem] h-[5rem] object-cover outline outline-2 outline-blue-400 dark:outline-teal-400/20 rounded-full"  (click)="profilePage(noti.t1.id)" />
+                
+                <div class="w-[80%] flex flex-col gap-1">
+                    <div class="text-lg font-semibold font-serif text-white dark:text-black">{{ noti.t1.username }}
+                    </div>
+                    <p class="text-xl text-black">Lorem ipsum dolor sit amet consectetur adipisicing elit.Labore reiciendis
+                        earum quasi</p>
+                    
+                    <div>
+                        <button type="button"
+                            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"  (click)="conformVerification(noti.t2.id)">
+                            Conform 
+                        </button>
+                        
+                        <button type="button"
+                            class="text-black  bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                            (click)="rejectEvent(noti.t2.id)">
+                            Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

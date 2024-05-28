@@ -1,36 +1,37 @@
 
-
-<div class="flex items-center justify-center p-12">
-    <div class="mx-auto w-full max-w-[550px] bg-white">
-
-
-      <form [formGroup]="eventForm">
-        <div class="mb-5">
-          <label for="eventName">Event Name</label>
-          <input type="text" formControlName="eventName" id="eventName" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+<div class="md:text-4xl sm:text-3xl xs:text-2xl text-center font-serif font-extrabold border-b-2 dark:border-red-500 text-white">
+  YOUR EVENTS
+</div>
+<div class="parent flex justify-center items-center gap-5 flex-wrap">
+  <div class="card" *ngFor="let entry of eventDataMap | keyvalue; let i = index; trackBy: trackByFn">
+    <div class="card__wrapper">
+      <div class="card___wrapper-accounts">
+        <div class="card__score">{{ i + 1 }}</div> 
+        <div class="card__accounts"> 
+        </div>   
+        <div class="card__accounts">
         </div>
-        <div class="mb-5">
-            <label for="eventName">placeName</label>
-            <input type="text" formControlName="placeName" id="placeName" class="w-full rounded-md border  bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-          </div>
-          <div class="mb-5">
-            <label for="eventName">peopleCapacityOfEvent</label>
-            <input type="text" formControlName="peopleCapacityOfEvent" id="peopleCapacityOfEvent" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-          </div>
-          <div class="mb-5">
-            <label for="eventName">priceOfBasieTicket</label>
-            <input type="text" formControlName="priceOfBasieTicket" id="priceOfBasieTicket" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-          </div>
-          <div class="mb-5">
-            <label for="eventName">priceOfDeluxeTicket</label>
-            <input type="text" formControlName="priceOfDeluxeTicket" id="priceOfDeluxeTicket" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-          </div>
-            <div class="mb-5">
-            <label for="eventName">priceOfPremiumTicket</label>
-            <input type="text" formControlName="priceOfPremiumTicket" id="priceOfPremiumTicket" class="w-full rounded-md border border-[#e0e0e0] bg-black py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
-          </div>
-        <button type="button" class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none" (click)="submitForm()"></button>
-      </form>
+      </div>
+      <div class="card__menu">
+        <i class="fa-solid fa-circle-nodes text-2xl" (click)="navigateToBackground(entry.value)"></i> 
+      </div>
+
+      <div class="card__menu">
+        <i class="fa-solid fa-message"(click)="navigationToChat(entry.value)"></i>
+      </div>
+
+    </div>
+    <div class="card__title">
+      <div *ngFor="let name of entry.value.slice(0, 3); let last = last" class="">
+        {{ name.eventPerformers.username }}{{ !last ? ', ' : ' ' }}
+      </div>  
+      Event 
+      <span *ngIf="entry.value.length > 3"> and more...</span>
+    </div>
+    <div class="card__subtitle">Event creating from {{ entry.value[0].eventCreator.username }}. the coming day </div>
+    <div class="card__indicator">
+      <span class="card__indicator-amount">Event Id: </span> {{entry.value[0].id}} 
+      <span class="card__indicator-percentage">2024</span>
     </div>
   </div>
-  
+</div>

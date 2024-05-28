@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { AuthserviceService } from '../service/auth/authservice.service';
 import { MessageAndNotificationService } from '../service/messageAndNotificationService/message-and-notification.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataSharingServiceService } from '../service/dataShare/data-sharing-service.service';
+import { UserId } from '../models/userIds';
 
 @Component({
   selector: 'app-chat-app',
@@ -9,166 +13,171 @@ import { Subscription } from 'rxjs';
   styleUrl: './chat-app.component.css',
 })
 export class ChatAppComponent {
+  selectedPerson: string | null = null;
+  selectedPersonId!: string;
+  message: string = '';
+  selectedRoomName!: string;
+  messageForm!: FormGroup;
+  messages!: any[];
+  receiverId: string;
+  receiverImage: any;
+  members: any[] = [];
+  userId: string;
+ 
+  chatRoomSubscription: Subscription | undefined;
+  public messageSubject = new Subject<string>();
+  public message$ = this.messageSubject.asObservable();
+  profilesData: string[] = [];
 
+  constructor(
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _userAuthService: AuthserviceService,
+    private _chatService: MessageAndNotificationService,
+    private fb: FormBuilder,
+    private dataSharingService: DataSharingServiceService
+  ) {}
 
-  title = 'WebSocketChatRoom';
-  greetings: string[] = [];
-  myGreetings: boolean[] = [];
-  disabled = true;
-  newmessage: string;
-  username: string ='';
-  recipientId: string = '';
-  messages: any[] = [];
-  newTextMessage: string = '';
-  newBinaryMessage: File | null = null;
+  isSubmitting: boolean = false;
 
-
-
-  messageInput:string
-  userId:string
-  messageList:any[] = [];
-
-  private stompClient = null;
-
-  constructor(private messageService:MessageAndNotificationService,
-    private service:AuthserviceService
-  ){}
 
   ngOnInit(): void {
-    this.showMessage()
-    this.username=this.service.extractUsername()
-   this.messageService.connect()
-
-   this.messageService.subscribeToRecipientMessages(this.recipientId).subscribe((message: string) => {
-    this.messages.push(message);
-  });
+    this.userId = this._userAuthService.getUserFromLocalStorage();
+    const givenData = this.dataSharingService.shareData;
+  
+    if (givenData) {
+      givenData.forEach((entry: any) => {
+        if (entry.eventPerformers.id) {
+          this.profilesData.push(entry.eventPerformers.id);
+        }
+      });
+      this.listOfUser(this.profilesData);
+    } else {
+      this._route.queryParams.subscribe((params) => {
+        if (params['id'] && params['id'] !== "") {
+        const givenData=params['id']
+        this.paramBaseId(givenData)
+         
+         
+        } else {
+          this._userAuthService.listOfChat(this.userId).subscribe((data) => {
+            if (data) {
+              this.listOfData(data);
+            }
+          });
+        }
+      });
+    }
+  
+    this.messageForm = this.fb.group({
+      message: [''],
+    });
+    this._chatService.initConnenctionSocket('initial-room-name');
+    this.listnerMessage();
   }
+  
 
-  showMessage() {
-    this.messageService.greetings$.subscribe((message: string) => {
-      if(this.username === message.split(':')[0]){
-        this.myGreetings.push(true);
-        this.greetings.push(message.split(':')[1]);
-      } else{
-        this.greetings.push(message);
-        this.myGreetings.push(false);
+
+
+
+
+
+
+
+  listnerMessage() {
+    this._chatService.message$.subscribe((message) => {
+      const receivedMessage = JSON.parse(message);
+      if (
+        this.selectedRoomName &&
+        receivedMessage.chatRoomName === this.selectedRoomName
+      ) {
+        this.messages.push({
+          content: receivedMessage.content,
+          recipientId: receivedMessage.recipientId,
+          senderId: receivedMessage.senderId,
+        });
       }
-      console.log(message);
     });
   }
 
-  onFileChange(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.newBinaryMessage = file;
+  sendMessage(): void {
+    const receiverId = this.selectedPersonId;
+
+
+    if (this.isSubmitting || !this.messageForm.valid) {
+      return;
+    }
+
+    if (this.messageForm.valid) {
+      const message = this.messageForm.get('message')?.value;
+      if (this.selectedRoomName && message.trim() !== '') {
+        this._chatService
+          .sendMessage(this.selectedRoomName, message, receiverId, this.userId)
+          .subscribe(
+            () => {
+             
+              console.log('Message sent successfully');
+              this.messageForm.reset();
+            },
+            (error) => {
+              console.error('Error sending message:', error);
+            }
+          );
+      }
     }
   }
 
-  sendMessage() {
-    const trimmedMessage = this.newmessage.trim();
-    if (trimmedMessage !== '') {
-        this.messageService.sendPrivateMessage(this.username + ': ' + trimmedMessage);
-    }
-    this.newmessage='';
+  selectPerson(receiverId: string, imageUrl: string): void {
+    this.receiverImage = imageUrl;
+    console.log(this.receiverImage);
+
+    this._chatService.createChatRoom(this.userId, receiverId).subscribe(
+      ({ roomName, messages }) => {
+        this.selectedRoomName = roomName;
+        this.messages = Array.isArray(messages) ? messages : [];
+        this._chatService.joinRoom(this.selectedRoomName);
+        this.messages.forEach((element) => {
+          console.log(element.content);
+        });
+      },
+      (error) => {
+        console.error('Error creating chat room:', error);
+      }
+    );
   }
 
-  listMessage(){
-    this.messageService.getMessageSub().subscribe((message:any)=>{
-      this.messageList=message;
-    })
+
+
+  listOfUser(userIds: string[]) {
+    const profiles: UserId = { id: userIds };
+    this._userAuthService.getListOfUsers(profiles).subscribe(
+      (data: any[]) => {
+        if (data!=null) {
+          this.members = data;
+          console.log(this.members); 
+        }
+        else {
+          this._router.navigate(['/EventSetUp']);
+        }
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
   }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  // sendMessageIn(): void {
-  //   if (this.newBinaryMessage) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       const binaryData = reader.result as string;
-  //       this.messageService.sendMessageToIndividual(this.recipientId, binaryData);
-  //       this.messages.push({
-  //         type: 'binary',
-  //         content: binaryData,
-  //         fileType: this.newBinaryMessage?.type || 'unknown',
-  //       });
-  //       this.newBinaryMessage = null;
-  //     };
-  //     reader.readAsDataURL(this.newBinaryMessage);
-  //   } else if (this.newTextMessage.trim()) {
-  //     this.messageService.sendMessageToIndividual(this.recipientId, this.newTextMessage.trim())
-  //     this.messages.push({
-  //       type: 'text',
-  //       content: this.newTextMessage.trim(),
-  //     });
-  //     this.newTextMessage = '';
-  //   }
-  // }
-
-
-  // constructor(
-  //   private messageService: MessageAndNotificationService,
-  //   private service: AuthserviceService
-  // ) {}
-
-  // recipientId: string ;
-  // messages: string[] = [];
-  // newMessage: string = '';
-  // subscription: Subscription;
-  // userName: string;
-
-  // ngOnInit(): void {
-    
-  //   this.recipientId="a9feddf0-508a-472d-a635-71e5916bf6b2"
-
-  //   this.messageService.connect();
-  //   this.subscription = this.messageService
-  //     .subscribeToRecipientMessages(this.recipientId)
-  //     .subscribe((message: string) => {
-  //       this.messages.push(message);
-  //     });
-
-    
-  // }
-
-  // sendMessage(): void {
-  //   if (this.newMessage.trim()) {
-  //     this.messageService.sendPrivateMessageUser(
-  //       this.recipientId,
-  //       this.newMessage
-  //     );
-  //     this.messages.push(`You: ${this.newMessage}`);
-  //     this.newMessage = '';
-  //   }
-  // }
-
-
-  // test(){
-  //   this.service.getUserChatId(this.recipientId).subscribe(
-  //     (user) => {
-  //       console.log(user);
-  //       this.userName=user.username
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching user information:', error);
-  //     }
-  //   );
-
-  // }
-
-
-
+  listOfData(data:any){
+    this.profilesData = data;
+    this.listOfUser(this.profilesData)
+  }
+  paramBaseId(data: any) {
+    this.profilesData.push(data);
+    this.listOfUser(this.profilesData)
+   
+  }
+  
 
 
 }

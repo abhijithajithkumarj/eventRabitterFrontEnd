@@ -1,25 +1,47 @@
-<div class="flex flex-col h-screen p-4">
-    <div class="card h-screen p-4">
-        <div class="flex-grow">
-            <div *ngFor="let message of greetings; let i = index" class="container mb-2 flex">
-                <div *ngIf="myGreetings[i]" class="bg-slate-100 text-black p-2 w-11/12 flex flex-row justify-end rounded">
-                    <p><b>{{ message }}</b></p>
-                </div>
-                <div *ngIf="!myGreetings[i]" class="bg-blue-500 text-white p-2 flex flex-row justify-start rounded">
-                    <p><b>{{ message }}</b></p>
-                </div>
-            </div>
-        </div>
-<!-- 
-        <form #loginForm="ngForm" class="flex items-end p-4 mb-4">
-            <div class="flex-1">
-                <textarea autocomplete="off" placeholder="Type Your Message..." name="newmessage"
-                    [(ngModel)]="newmessage" required class="w-full border p-2 rounded"></textarea>
-            </div>
 
-            <button  class="btn btn-primary ml-2 mb-3m text-white" (click)="sendMessage()" [disabled]="!loginForm.valid">
-                Send
-            </button>
-        </form> -->
+<body class="h-screen flex flex-col ">
+  <div class="chat-app flex flex-1 flex-col">
+    <div class="flex flex-1 overflow-hidden">
+      <div class="chat-sidebar w-1/4 bg-white border-r border-gray-200 p-4 overflow-y-auto shadow-md">
+        <h2 class="text-lg font-semibold mb-4 text-blue-700">Members</h2>
+        
+        <ul>
+          <ng-container *ngFor="let member of members">
+            <li *ngIf="member.id !== userId" (click)="selectPerson(member.id, member)" class="cursor-pointer hover:bg-gray-100 p-2 flex items-center rounded-md transition duration-200">
+              <img [src]="member.imageUrl || 'default-avatar-url.png'" alt="{{ member.username }}" class="h-12 w-12 rounded-full mr-4 border border-gray-300">
+              <span class="font-medium text-gray-700">{{ member.username }}</span>
+            </li>
+          </ng-container>
+        </ul>
+        
+      
+      </div>
+
+      <div class="chat-main w-3/4 p-4 flex flex-col">
+        <div class="chat-room flex-1 mb-4" *ngIf="selectedRoomName">
+          <div class="bg-gray-200 rounded-lg p-4">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-700 flex items-center">
+              <img [src]="receiverImage.imageUrl || 'default-room-url.png'" alt="Chat Room Image" class="h-10 w-10 rounded-full mr-4">
+              {{receiverImage.username}}  
+            </h2>
+          </div>
+          
+          <div class="messages flex-1  border border-gray-200 p-4 rounded-lg bg-white shadow-md">
+            <div *ngFor="let message of messages">
+              <div [ngClass]="{'my-message text-right bg-blue-100': message.senderId === userId, 'other-message text-left bg-gray-100': message.senderId !== userId}" class="mb-2 p-2 rounded-md shadow-sm">
+                <p class="text-gray-700">{{ message.content }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form [formGroup]="messageForm" (ngSubmit)="sendMessage()" class="flex mt-auto mb-12" [class.submitting]="isSubmitting">
+          <input formControlName="message" placeholder="Type your message here" class="flex-1 border border-gray-200 rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button type="submit" [disabled]="isSubmitting" class="bg-blue-500 text-white p-2 rounded-r-lg hover:bg-blue-600 transition duration-200">Send</button>
+        </form>
+        
+      </div>
     </div>
-</div>
+  </div>
+</body>
+

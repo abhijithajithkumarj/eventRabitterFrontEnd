@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthserviceService } from '../../../core/service/auth/authservice.service';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -8,14 +8,21 @@ import { Route, Router } from '@angular/router';
   styleUrl: './navigation.component.css',
 })
 export class NavigationComponent implements OnInit {
-  constructor(private service: AuthserviceService, private router: Router) {}
+
+  constructor(
+    private service: AuthserviceService, 
+    private router: Router,
+    private route:ActivatedRoute
+  ) {}
 
   roll: string;
+  userId:string
 
   getUserData!:string;
 
   ngOnInit(): void {
     this.roll = this.service.getUserRoleLocalStorage();
+    this.userId=this.service.getUserFromLocalStorage();
     console.log(this.roll);
   }
 
@@ -26,16 +33,22 @@ export class NavigationComponent implements OnInit {
     else if (this.roll === 'ADMIN') {
       this.router.navigateByUrl('adimdashbord');
     } 
-    else {
-      this.router.navigateByUrl('login');
-    }
+    // else {
+    //   this.router.navigateByUrl('login');
+    // }
   }
 
   profilePage() {
-    if (this.roll !== undefined) {
-      this.router.navigateByUrl('userpage');
+    if (this.userId !== undefined) {
+      this.router.navigate(['/userpage'], { queryParams: { id: this.userId } })
+        .then(() => {
+          window.location.reload();
+        });
     } else {
-      this.router.navigateByUrl('login');
+      this.router.navigateByUrl('login')
+        .then(() => {
+          window.location.reload();
+        });
     }
   }
 
@@ -50,4 +63,9 @@ export class NavigationComponent implements OnInit {
       console.log(this.getUserData);
      })
   }
+
+
+  eventCard() {
+    this.router.navigateByUrl('eventTicketPlace');
+    }
 }

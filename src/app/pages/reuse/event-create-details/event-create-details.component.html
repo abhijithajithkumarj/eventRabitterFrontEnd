@@ -1,0 +1,52 @@
+<section id="product-page" class="">
+  <div class="product-details">
+
+    <div class="product-img">
+
+
+      <div class="swiper mySwiper ">
+        <div class="swiper-wrapper">
+          <div>
+            <img [src]="currentImageUrl" style="width: 700px; height: 600px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-text">
+      <ng-container *ngFor="let event of evantData; let last = last">
+        <h3>{{ event.username }}{{ !last ? ',' : '' }}</h3>
+      </ng-container>
+
+
+      <span class="product-price"></span>
+      <p>Abhijith Shyam is orchestrating an exclusive event aimed at fostering meaningful connections among like-minded
+        individuals. Through meticulous planning and attention to detail, the event promises an immersive experience
+        that transcends conventional networking. Participants can anticipate engaging discussions, insightful
+        presentations, and ample opportunities for collaboration
+      </p>
+
+
+      <div class="product-button">
+       
+        <ng-container *ngIf="alreadyCreated">
+          <a class="add-bag-btn" style="background-color: blue;">Already Created</a>
+        </ng-container>
+        
+
+        <ng-container *ngIf="!alreadyCreated && !conformation">
+          <a class="add-bag-btn" style="background-color: red;">Can Not Create Event</a>
+        </ng-container>
+        
+  
+        <ng-container *ngIf="!alreadyCreated && conformation">
+          <a routerLink="/registration" [queryParams]="{ cfm: eventSetUpId }" class="add-bag-btn">Go To Create</a>
+        </ng-container>
+      </div>
+      
+      
+
+
+    </div>
+  </div>
+</section>

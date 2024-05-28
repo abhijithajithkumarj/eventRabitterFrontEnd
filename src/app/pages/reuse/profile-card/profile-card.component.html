@@ -1,5 +1,9 @@
-<body>
-  <div class="container">
+
+
+<br>
+  <br>
+  <br>
+  <div class="container ">
     <div class="card-holder">
 
       <a [routerLink]="'/userpage'" class="card">
@@ -23,49 +27,48 @@
         <div class="logo" style="
               background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
             ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/minecraft.png" />
+       <i class="fa-brands fa-odysee text-5xl"></i>
         </div>
         <div class="content-container">
           <div class="content content-1">
-            <h1>Set Event</h1>
+            <h1>Event Ground</h1>
           </div>
           <div class="content content-2">
-            <h1>Go To User Page</h1>
+            <h1>Go To Event Ground </h1>
           </div>
         </div>
       </a>
 
-      <a href="#" class="card">
+      <a [routerLink]="'/notification'" class="card">
         <div class="logo" style="
               background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
             ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/minecraft.png" />
+          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/truenas.png" />
         </div>
         <div class="content-container">
           <div class="content content-1">
-            <h1>User Profile</h1>
+            <h1>Notification</h1>
             
           </div>
           <div class="content content-2">
-            <h1>Go To User Page</h1>
+            <h1>Go To Notification Place</h1>
           </div>
         </div>
       </a>
 
 
-      <a href="#" class="card">
+      <a [routerLink]="'/profileCategory'" class="card">
         <div class="logo" style="
               background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
             ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/minecraft.png" />
+     <i class="fa-solid fa-seedling text-4xl"></i>
         </div>
         <div class="content-container">
           <div class="content content-1">
-            <h1>User Profile</h1>
-          
+            <h1>Register Profile</h1>
           </div>
           <div class="content content-2">
-            <h1>Go To User Page</h1>
+            <h1>Go To Register Profile</h1>
           </div>
         </div>
       </a>
@@ -78,15 +81,15 @@
         <div class="logo" style="
               background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
             ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/nginxpm.png" />
+          <i class="fa-regular fa-chart-bar text-4xl"></i>
         </div>
         <div class="content-container">
           <div class="content content-1">
-            <h1>User Profile</h1>
+            <h1>Chat Place</h1>
            
           </div>
           <div class="content content-2">
-            <h1>Go To User Page</h1>
+            <h1>Go To Chat Place</h1>
           </div>
         </div>
       </a>
@@ -110,11 +113,29 @@
           </div>
         </div>
       </a>
+
+
+      <a  [routerLink]="'/ticketList'"  class="card">
+        <div class="logo" style="
+              background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
+            ">
+            <i class="fa-solid fa-hands-asl-interpreting text-4xl"></i>
+        </div>
+        <div class="content-container">
+          <div class="content content-1">
+            <h1>Event Ticket</h1>
+           
+          </div>
+          <div class="content content-2">
+            <h1>Go To Event Ticket Page</h1>
+          </div>
+        </div>
+      </a>
       <a href="#" class="card">
         <div class="logo" style="
               background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
             ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/proxmox.png" />
+       <i class="fa-solid fa-braille text-4xl"></i>
         </div>
         <div class="content-container">
           <div class="content content-1">
@@ -130,23 +151,7 @@
         <div class="logo" style="
               background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
             ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/tplink.png" />
-        </div>
-        <div class="content-container">
-          <div class="content content-1">
-            <h1>User Profile</h1>
-           
-          </div>
-          <div class="content content-2">
-            <h1>Go To User Page</h1>
-          </div>
-        </div>
-      </a>
-      <a href="#" class="card">
-        <div class="logo" style="
-              background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
-            ">
-          <img src="https://cdn.ethancopping.com/codepen/Interactive%20Dual%20Hover%20Card/truenas.png" />
+         <i class="fa-solid fa-ghost text-4xl"></i>
         </div>
         <div class="content-container">
           <div class="content content-1">
@@ -158,6 +163,22 @@
           </div>
         </div>
       </a>
+
+        <button (click)="logOut()" class="card">
+        <div class="logo" style="
+              background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));
+            ">
+         <i class="fa-solid fa-ghost text-4xl"></i>
+        </div>
+        <div class="content-container">
+          <div class="content content-1">
+            <h1>Loge Out </h1>
+          
+          </div>
+          <div class="content content-2">
+            <h1>Go To Loge Out</h1>
+          </div>
+        </div>
+      </button>
     </div>
   </div>
-</body>

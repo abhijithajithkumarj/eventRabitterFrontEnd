@@ -10,42 +10,55 @@
 
      <div class=" parent flex  flex-col sm:flex-row   justify-center items-center w-[100%]  ">
        <div class="relative flex flex-col justify-center items-center ">
-         <div class="ring w-[500px] h-[500px] sm:w-[400px] sm:h-[400px] md:w-[350px] md:h-[400px] lg:w-[500px] lg:h-[500px]">
+         <div class="ring w-[500px] h-[500px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[500px] lg:w-[500px] lg:h-[500px]">
            <i style="--clr:#00ff0a;"></i>
            <i style="--clr:#ff0057;"></i>
            <i style="--clr:#fffd44;"></i>
          </div>
 
 
+         
          <div  class="signin">
-            <h2 *ngIf="!showOtpForm">SignUpForm</h2>
+          <h2  *ngIf="!showOtpForm">SignUp</h2>
           <form  *ngIf="!showOtpForm" [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUpForm()">
                <div class="inputBx">
                    <input type="text" placeholder="First Name" formControlName="firstName">
                </div>
+               <br>
                <div class="inputBx">
                    <input type="text" placeholder="Last Name" formControlName="lastName">
                </div>
+               <br>
                <div class="inputBx">
                    <input type="text" placeholder="Username" formControlName="username">
                </div>
+               <br>
                <div class="inputBx">
                    <input type="password" placeholder="Password" formControlName="password">
                </div>
+               <br>
                <div class="inputBx">
                    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
                </div>
+               <br>
                <div class="inputBx">
                 <input type="text" placeholder=" Phone Number" formControlName="phoneNumber">
                </div>
+               <br>
                <div class="inputBx">
                    <input type="email" placeholder="Email" formControlName="email">
                </div>
+               <br>
+            
                <div class="inputBx flex justify-center">
-                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 w-72">
                     {{ 'signup' | uppercase }}
                 </button>
-            </div>            
+                
+            </div>    
+            <div class="links">
+              <a routerLink="/login">Log in</a>
+            </div>        
            </form>
 
 
@@ -56,7 +69,7 @@
                 <input type="text" placeholder="Enter OTP" formControlName="otp">
               </div>
               <div class="inputBx flex justify-center">
-                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Verify OTP</button>
+                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-72">Verify OTP</button>
               </div>
             </form>
            </ng-container>

@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 import { AuthserviceService } from '../../../../core/service/auth/authservice.service';
 
 
-
-
-
-
 @Component({
   selector: 'app-list-ofcategory',
   templateUrl: './list-ofcategory.component.html',

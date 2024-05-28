@@ -8,6 +8,10 @@
          <p class="text-6xl font-bold uppercase tracking-wide ">
           Create your own event        
          </p>
+         <p class=" text-2xl text-green-400" >Free Access</p>
+         <p class=" text-2xl text-yellow-400" >Username:   mhdfaizal</p>
+         <p class=" text-2xl text-yellow-400" >Password:   123</p>
+        
         </div>
 
 
@@ -22,26 +26,37 @@
          <div *ngIf="showLoginForm" class="login mt-2">
           <h2>Login</h2>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+
             <div class="inputBx">
               <input type="text" placeholder="Username" formControlName="username">
             </div>
+            <br>
+
             <div class="inputBx">
               <input type="password" placeholder="Password" formControlName="password">
             </div>
+            <br>
 
+            
             <div class="flex justify-center">
-            <button type="submit" 
-            class="bg-gradient-to-br from-purple-600 to-blue-500 text-white rounded-lg px-5 py-2.5 text-sm focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-              Purple to Blue
-             </button>
+              <button type="submit" class="bg-gradient-to-br from-purple-600 to-blue-500 text-white rounded-lg px-5 py-2.5 text-sm focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 w-72">
+                LogIn
+              </button>
             </div>
             <div class="inputBx">
               <button type="submit" [disabled]="!loginForm.valid">Sign in</button>
             </div>
+          
+            @if(errorMessage){
+              <div class="error-message text-red-600">{{ errorMessage }}</div>
+
+            }
+           
           </form>
+          
+          
           <div class="links">
             <a routerLink="/signup">Sign Up</a>
-            <a href="#">Forget Password</a>
           </div>
         </div>
         
