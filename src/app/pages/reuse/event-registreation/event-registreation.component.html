@@ -1,0 +1,76 @@
+<div class="parent">
+  <div class="container">
+
+
+
+    <input type="file" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" id="" (change)="bannerFileSelect($event)">
+    <input type="file" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" id="" (change)="CardFileSelect($event)">
+    <input type="file" name="BannerImage" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" id="" (change)="ticketFileSelect($event)">
+
+
+  
+
+    <form  [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        
+      <div class="form-row">
+        <div class="input-data">
+          <input type="text" required  formControlName="eventName">
+          <div class="underline"></div>
+          <label for="">Event Name</label>
+        </div>
+        <div class="input-data">
+          <input type="text" required   formControlName="placeName">
+          <div class="underline"></div>
+          <label for="">Event Place Name</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <input type="text" required formControlName="peopleCapacityOfEvent">
+          <div class="underline"></div>
+          <label for="">People Capacity Of Event</label>
+        </div>
+        <div class="input-data">
+          <input type="text" required  formControlName="priceOfBasieTicket">
+          <div class="underline"></div>
+          <label for="">Price Of Basie Ticket</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <input type="text" required  formControlName="priceOfDeluxeTicket">
+          <div class="underline"></div>
+          <label for="">Price Of Deluxe Ticket</label>
+        </div>
+        <div class="input-data">
+          <input type="text" required   formControlName="priceOfPremiumTicket">
+          <div class="underline"></div>
+          <label for="">Price Of Premium Ticket</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="input-data">
+          <input type="text" #inputField required  formControlName="priceOfDeluxeTicket">
+          <div class="underline"></div>
+          <label for="">Price Of Deluxe Ticket</label>
+        </div>
+       
+      </div>
+  
+      <div class="form-row submit-btn">
+        <button type="submit" class="bg-purple-700 w-full py-2 rounded-lg mb-4">Save</button>
+      </div>
+    </form>
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+   

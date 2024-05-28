@@ -1,0 +1,30 @@
+<div
+  class="md:text-4xl sm:text-3xl xs:text-2xl text-center font-serif font-extrabold border-b-2 dark:border-red-500 text-white">
+  TICKETS
+</div>
+
+<div class="parent">
+  @if (tickets!==null){
+  @for(ticket of tickets; track ticket){
+  <button class="card"  [routerLink]="['/eventTicket']" [queryParams]="{ bookId: ticket.id }" >
+    <img class="card-image" [src]="ticket.setUpTheEvent.cardImage.imageUrl" />
+    <p class="card-title">EVENT CREATER <br>{{ticket.setUpTheEvent.creatorId.username}} </p>
+    <p class="small-desc">
+     
+    </p>
+    <div class="go-corner">
+      <div class="go-arrow">→</div>
+    </div>
+  </button>
+  }
+  } @else{
+  <a
+    class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-950 dark:hover:bg-gray-700 mt-52">
+
+    <h1 class="mb-2 text-3xl font-bold tracking-tight text-red-700 dark:text-red-700">You have no tickets 
+      2021</h1>
+    <p class="font-normal text-gray-700 dark:text-gray-400">"Head on over to grab your tickets and get ready to create a vibe that’s more thrilling than trying to parallel park on a first date! Prepare yourself for an entertainment experience so wild, you'll be laughing harder than a hyena at a stand-up comedy show!"</p>
+    <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"  [routerLink]="['/eventTicketPlace']" routerLinkActive="router-link-active"  >GO TO SHOP YOUR EVENT</button>
+  </a>
+  }
+</div>

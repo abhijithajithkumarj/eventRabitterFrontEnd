@@ -1,172 +1,49 @@
 <div class="flex flex-col md:flex-row parent no-scrollbar">
-  
-    <div class="bg-zinc-900 text-white p-4 w-full md:w-1/2 ">
-      <div class="flex items-center justify-between mb-4">
-        <h2 class="text-lg font-bold mb-4">Select Event Team</h2>
-        <div class="flex items-center">
-          <input type="date" class="bg-zinc-800 p-2 rounded text-white mr-2">
-          <select class="bg-zinc-800 p-2 rounded text-white">
-            <option>Allepuzha</option>
-          </select>
-        </div>
+  <div class="bg-zinc-900 text-white p-4 w-full md:w-1/2">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold mb-4">Select Event Team</h2>
+      <button type="button" class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" (click)="setTeam()">Set Team</button>
+      <div class="flex items-center">
+        <input type="date" class="bg-zinc-800 p-2 rounded text-white mr-2" [(ngModel)]="selectedDate">
       </div>
-     
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 container">
-        
-        <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(15, 0, 14), rgb(82, 2, 92), rgb(198, 19, 234));">
-          <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-          <h3 class="font-semibold text-white">Night Party Club</h3>
-          <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-          <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-        </div>
-        
-        
-        <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-        </div>
-        
-       
-        <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-          </div>
-
-
-        
-        <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-          <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-          <h3 class="font-semibold text-white">Night Party Club</h3>
-          <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-          <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-        </div>
-  
-        <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-          </div>
-        
-          <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-          </div>
-     
-          <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-          </div>
-        
-          <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(0, 0, 0), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-          </div>
-       
-          <div class="p-3 rounded-lg" style="  background: linear-gradient(30deg, rgb(16, 0, 15), rgb(82, 2, 92), rgb(198, 19, 234));">
-            <img src="https://placehold.co/300x150" alt="Event Image" class="rounded-lg mb-2">
-            <h3 class="font-semibold text-white">Night Party Club</h3>
-            <p class="text-sm text-zinc-300">Min 50% off  50000</p>
-            <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
-          </div>
+      <div class="flex items-center">
+        <input type="text" class="bg-zinc-800 p-2 rounded text-white mr-2" placeholder="Search by GatherGrove Name" [(ngModel)]="searchTerm" (ngModelChange)="filterProfessionals()">
       </div>
-      
     </div>
-    
-    
-    <div class=" text-white p-4 w-full md:w-1/2">
-     
-
-      <div class="space-y-4 second-container">
-        
-        
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
-        </div>
+   
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 container">
+      <ng-container *ngFor="let person of filteredProfessionals">
+        <div *ngIf="userId !== person.id" class="p-3 rounded-lg" style="background: linear-gradient(30deg, rgb(15, 0, 14), rgb(82, 2, 92), rgb(198, 19, 234));">
+          <img [src]="person.imageUrl" alt="Event Image" class="rounded-lg mb-2" style="width: 350px; height: 200px;">
+          <h3 class="font-semibold text-white">{{ person.username }}</h3>
+          <button class="font-semibold text-white" [routerLink]="['/userpage']" [queryParams]="{ id: person.id }">
+            Go to User Profile
+          </button>
           
-        
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
+          <ng-container *ngIf="!person.added && selectedDate">
+            <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" (click)="AddTeam(person, person.id); person.added = true;">
+              Add
+            </button>
+          </ng-container>
+          <p class="text-sm text-zinc-300">Min 50% off 50000</p>
+          <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
         </div>
-        
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
+      </ng-container>
+    </div>
+  </div>
+  
+  <div class="text-white p-4 w-full md:w-1/2">
+    <div class="space-y-4 second-container">
+      <div class="p-3 rounded-lg flex items-center" style="background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));" *ngFor="let data of showData">
+        <img [src]="data.imageUrl" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
+        <div>
+          <h1 class="font-semibold">{{ data.username }}</h1>
+          <p class="text-xl text-black font-bold">100000</p>
+          <p class="text-xl text-black">{{ data.description }}</p>
+          <p class="text-xl text-black">{{ data.bio }}</p>
         </div>
-        
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
-        </div>
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
-        </div>
-
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
-        </div>
-
-
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
-        </div>
-
-
-        <div class=" p-3 rounded-lg flex items-center" style="  background: linear-gradient(30deg, rgb(100, 241, 84), rgb(92, 92, 229), rgb(111, 30, 30));">
-            <img src="https://placehold.co/16x16" alt="Profile Image" class="w-16 h-16 rounded-full mr-3"> 
-            <div>
-              <h1 class="font-semibold" >Thirumalix</h1>
-              <p class=" text-xl text-black font-bold ">100000</p>
-              <p class="  text-xl text-black">The term 'Thirumalix' appears to be a random combination of words.</p>
-            </div>
-        </div>
-
-
-
-
+        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" (click)="removeTeam(data)">Remove</button>
       </div>
     </div>
   </div>
+</div>

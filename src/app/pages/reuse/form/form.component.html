@@ -6,14 +6,9 @@
       <div class="h-screen flex items-center justify-center bg-black">
         <div class="flex flex-col gap-4">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-            <div class=" sm:row-span-4">
-              <img  
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdPDKy4BHfkcoi0yXTnb8oi6sy24zV1MK-fLktZyh9qCP6Zamwo56PbAvH_g01CvBreF4&usqp=CAU"
-                class="rounded-lg" alt="" />
-            </div>
             <div>
               <select formControlName="listOfCategoryId" class="rounded-lg py-2 w-full" style="border-color: red;">
-                <option *ngFor="let category of categories" [value]="category.id">{{ category.category }}</option>
+                <option *ngFor="let category of IndividualCategory" [value]="category.id">{{ category.individualCategoryName }}</option>
               </select>
             </div>
             <div class="">
@@ -45,9 +40,10 @@
       <div class="h-screen flex items-center justify-center bg-black">
         <div class="flex flex-col gap-4">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+    
             <div>
               <select formControlName="listOfCategoryId" class="rounded-lg py-2 w-full" style="border-color: red;">
-                <option *ngFor="let category of categories" [value]="category.id">{{ category.category }}</option>
+                <option *ngFor="let category of gatherGrove" [value]="category.id">{{ category.gatherGroveName }}</option>
               </select>
             </div>
             <div class="">
@@ -85,9 +81,11 @@
         <div class="flex flex-col gap-4">
           <div class="grid grid-cols-1 sm:grid-cols-1 gap-4 mt-4">
 
+            
+            
             <div>
               <select formControlName="listOfCategoryId" class="rounded-lg py-2 w-full" style="border-color: red;">
-                <option *ngFor="let category of categories" [value]="category.id">{{ category.category }}</option>
+                <option *ngFor="let category of teamCategory" [value]="category.id">{{ category.teamCategoryName }}</option>
               </select>
             </div>
             
@@ -98,7 +96,7 @@
             <div class="w-full">
               <input type="text" formControlName="description" class="rounded-lg py-16 px-6 w-full text-lg" placeholder="Description" />
             </div>
-            
+
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 

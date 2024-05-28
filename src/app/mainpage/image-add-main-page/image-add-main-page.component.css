@@ -1,0 +1,20 @@
+/* Custom input style */
+.input-style {
+     border: 2px solid #4A5568; /* Dark gray border */
+     border-radius: 10px; /* Rounded corners */
+     padding: 14px 18px; /* Padding */
+     font-size: 18px; /* Font size */
+     outline: none; /* Remove outline on focus */
+     transition: border-color 0.3s ease; /* Smooth transition for border color */
+     width: 100%; /* Full width */
+     margin-bottom: 20px; /* Spacing between inputs */
+   }
+   
+   .input-style::placeholder {
+     color: #718096; /* Placeholder text color */
+   }
+   
+   .input-style:focus {
+     border-color: #4299E1; /* Border color on focus */
+   }
+   

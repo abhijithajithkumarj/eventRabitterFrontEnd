@@ -7,5 +7,8 @@ export interface UserProfile {
      bio: string;
      description: string;
      profileVerification:boolean
+     image:string
+     id:string;
+
    }
    

@@ -37,9 +37,29 @@ import { ChatAppComponent } from './core/chat-app/chat-app.component';
 import { BackgroundComponent } from './shared/background/background.component';
 import { EventTypeComponent } from './pages/reuse/event-type/event-type.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
 import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.component';
+import { NotificationComponent } from './pages/reuse/notification/notification.component';
+import { EventTicketComponent } from './mainpage/event-ticket/event-ticket.component';
+import { TicketListComponent } from './pages/reuse/ticket-list/ticket-list.component';
+import { NotFoundComponent } from './pages/reuse/not-found/not-found.component';
+import { SecondBannerComponent } from './pages/reuse/second-banner/second-banner.component';
+import { ButtonModule } from 'primeng/button';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { DialogModule } from 'primeng/dialog';
+import { TicketBuyingComponent } from './mainpage/ticket-buying/ticket-buying.component';
+import { TreeSelectModule } from 'primeng/treeselect';
+import { EventRegistreationComponent } from './pages/reuse/event-registreation/event-registreation.component';
+import { EventCreateDetailsComponent } from './pages/reuse/event-create-details/event-create-details.component';
+import { ToastModule } from 'primeng/toast';
+import { EventBookingPageCardsComponent } from './pages/event-booking-page-cards/event-booking-page-cards.component';
+import { ChartOfEventRabbiterComponent } from './pages/chart-of-event-rabbiter/chart-of-event-rabbiter.component';
+import { ChartModule } from 'primeng/chart';
+import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/event-web-guidelines.component';
+import { ImageAddMainPageComponent } from './mainpage/image-add-main-page/image-add-main-page.component';
+
 
 
 
@@ -71,7 +91,20 @@ import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.co
     EventTypeComponent,
     SetUpEventComponent,
     ProfilecategoryComponent,
-    SeatSelectorComponent
+    SeatSelectorComponent,
+    NotificationComponent,
+    EventTicketComponent,
+    TicketListComponent,
+    NotFoundComponent,
+    SecondBannerComponent,
+    TicketBuyingComponent,
+    EventRegistreationComponent,
+    EventCreateDetailsComponent,
+    EventBookingPageCardsComponent,
+    ChartOfEventRabbiterComponent,
+    EventWebGuidelinesComponent,
+    ImageAddMainPageComponent,
+
    
   ],
   imports: [
@@ -89,7 +122,15 @@ import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.co
     StoreModule.forRoot({}),
     FormsModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    ButtonModule ,
+    AutoCompleteModule,
+    DialogModule,
+    TreeSelectModule,
+    ToastModule,
+    ChartModule,
+    MatDialogModule
+
    
   ],
   providers: [

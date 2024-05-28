@@ -1,0 +1,21 @@
+<div class="parent">
+  <div class="card" *ngFor="let card of cards">
+    <div class="rectangle"></div>
+    <div class="card-img">
+      <img
+        [src]="card.cardImage.imageUrl"
+        alt="Herse Headman">
+      <div class="card-img-overlay">
+        <p routerLink="/buyingPlace"  [queryParams]="{ id: card.id, eventId: card.eventSetup.id }"> BUY <br />NOW</p>
+      </div>
+    </div>
+    <div class="card-content">
+      <h2>{{card.creatorId
+        .username}} </h2>
+      <h3>{{card.creatorId
+        .username}} </h3>
+      <p>{{card.placeName}} </p>
+    </div>
+  </div>
+  
+</div>
