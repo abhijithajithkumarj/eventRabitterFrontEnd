@@ -27,6 +27,7 @@ import { TicketBooking } from '../../models/ticketBooking';
 import { formatDate } from '@angular/common';
 import { DateOfEvent } from '../../models/dataOfEvent';
 import { Router } from '@angular/router';
+import { ListOfCategoryDto } from '../../models/listOfCategory';
 
 @Injectable({
   providedIn: 'root',
@@ -276,6 +277,28 @@ export class AuthserviceService {
 
   listOfTickets(eventId:string): Observable<any> {
     return this.http.get(`event-create-booking/get-list-of/ticket/${eventId}`)
+  }
+
+  uplodeGuidelineImage(file: File, name: string, num: number): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('image', file, file.name);
+    formData.append('name', name);
+    formData.append('number', num.toString());
+    return this.http.post<any>("user/event-rabitter-image",formData)
+  }
+
+  getGuidelineImage():Observable<any> {
+    return this.http.get<any>("user/get-images-guidelines")
+  }
+
+  saveGatherGroveList(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
+    return this.http.post<ListOfCategoryDto[]>("user/save/gatherGrove",list)
+  }
+  individualCategory(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
+    return this.http.post<ListOfCategoryDto[]>("user/save/individualCategory",list)
+  }
+  teamCategory(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
+    return this.http.post<ListOfCategoryDto[]>("user/save/teamCategory",list)
   }
 
 

@@ -1,4 +1,3 @@
-
 .parent {
   min-height: 100vh;
 }
@@ -8,6 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 600px; /* Increase width */
+  height: 600px; /* Increase height */
   --tw-ring-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -21,31 +22,33 @@
 .ring i:nth-child(1) {
   border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
   animation: animate 6s linear infinite;
-  border: 5px solid var(--clr);
+  border: 7px solid var(--clr); /* Increase border size */
   filter: drop-shadow(0 0 30px var(--clr)),
-  blur(7px), 
- brightness(1.2); 
+          blur(7px), 
+          brightness(1.2); 
 }
+
 .ring i:nth-child(2) {
   border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
   animation: animate 4s linear infinite;
-  border: 5px solid var(--clr);
+  border: 7px solid var(--clr); /* Increase border size */
   filter: drop-shadow(0 0 20px var(--clr)),
-  blur(5px), 
- brightness(1.2); 
+          blur(5px), 
+          brightness(1.2); 
 }
+
 .ring i:nth-child(3) {
   border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
   animation: animate2 10s linear infinite;
-  border: 5px solid var(--clr);
+  border: 7px solid var(--clr); /* Increase border size */
   filter: drop-shadow(0 0 20px var(--clr)),
-  blur(5px), 
- brightness(1.2); 
+          blur(5px), 
+          brightness(1.2); 
 }
-.ring:hover i {
 
-         border: 5px solid var(--clr); 
-         filter: drop-shadow(0 0 20px var(--clr));       
+.ring:hover i {
+  border: 7px solid var(--clr); /* Increase border size */
+  filter: drop-shadow(0 0 20px var(--clr));       
 }
 
 @keyframes animate {
@@ -75,13 +78,12 @@
 
 .signin {
   position: absolute;
-  width: 600px;
+  width: 700px; /* Increase width */
   height: 200%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
 }
 
 .signin h2 {

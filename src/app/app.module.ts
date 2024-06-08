@@ -23,7 +23,7 @@ import { UserProfileComponent } from './mainpage/user-profile/user-profile.compo
 import { UserGalleryComponent } from './pages/reuse/user-gallery/user-gallery.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule} from '@angular/material/form-field'
+import { MatFormField, MatFormFieldModule} from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { PlaceAutocompleteComponent } from './pages/reuse/place-autocomplete/place-autocomplete.component';
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
@@ -37,7 +37,7 @@ import { ChatAppComponent } from './core/chat-app/chat-app.component';
 import { BackgroundComponent } from './shared/background/background.component';
 import { EventTypeComponent } from './pages/reuse/event-type/event-type.component';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { SetUpEventComponent } from './mainpage/set-up-event/set-up-event.component';
 import { SeatSelectorComponent } from './mainpage/seat-selector/seat-selector.component';
@@ -129,7 +129,10 @@ import { ImageAddMainPageComponent } from './mainpage/image-add-main-page/image-
     TreeSelectModule,
     ToastModule,
     ChartModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+ 
 
    
   ],

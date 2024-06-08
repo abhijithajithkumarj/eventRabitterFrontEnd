@@ -1,87 +1,100 @@
+<div class="bg-black h-[100vh] w-[100%] rabbit-font">
+  <div class="flex justify-center gap items-center w-[80%] mx-auto">
+    <div class="text-white bg-black hidden md:block mx-3">
+      <p class="text-6xl font-bold uppercase tracking-wide">
+        Create your own event
+      </p>
+    </div>
 
-<div class="bg-black h-[100vh]  w-[100%] rabbit-font">
-     <div class="flex justify-center gap items-center  w-[80%] mx-auto">
-     
-      <div class=" text-white bg-black  hidden md:block mx-3">
-        <p class="text-6xl font-bold uppercase tracking-wide ">
-         Create your own event        
-        </p>
-       </div>
+    <div class="parent flex flex-col sm:flex-row justify-center items-center w-[100%]">
+      <div class="relative flex flex-col justify-center items-center">
+        <div class="ring w-[500px] h-[500px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[500px] lg:w-[500px] lg:h-[500px]">
+          <i style="--clr:#00ff0a;"></i>
+          <i style="--clr:#ff0057;"></i>
+          <i style="--clr:#fffd44;"></i>
+        </div>
 
-     <div class=" parent flex  flex-col sm:flex-row   justify-center items-center w-[100%]  ">
-       <div class="relative flex flex-col justify-center items-center ">
-         <div class="ring w-[500px] h-[500px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[500px] lg:w-[500px] lg:h-[500px]">
-           <i style="--clr:#00ff0a;"></i>
-           <i style="--clr:#ff0057;"></i>
-           <i style="--clr:#fffd44;"></i>
-         </div>
+        <div class="signin">
+          <h2 *ngIf="!showOtpForm">SignUp</h2>
+          <form *ngIf="!showOtpForm" [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUpForm()">
+            <div class="inputBx">
+              <input type="text" placeholder="First Name" formControlName="firstName">
+              <div *ngIf="signUpForm.get('firstName')?.invalid && signUpForm.get('firstName')?.touched" class="text-red-500">
+                First Name is required.
+              </div>
+            </div>
+            <br>
+            <div class="inputBx">
+              <input type="text" placeholder="Last Name" formControlName="lastName">
+              <div *ngIf="signUpForm.get('lastName')?.invalid && signUpForm.get('lastName')?.touched" class="text-red-500">
+                Last Name is required.
+              </div>
+            </div>
+            <br>
+            <div class="inputBx">
+              <input type="text" placeholder="Username" formControlName="username">
+              <div *ngIf="signUpForm.get('username')?.invalid && signUpForm.get('username')?.touched" class="text-red-500">
+                Username is required.
+              </div>
+            </div>
+            <br>
+            <div class="inputBx">
+              <input type="password" placeholder="Password" formControlName="password">
+              <div *ngIf="signUpForm.get('password')?.hasError('passwordStrength') && signUpForm.get('password')?.touched" class="text-red-500">
+                MINIMUM 5 CHARECTER AND (a,A,#,$,7) 
+              </div>
+            </div>
+            <br>
+            <div class="inputBx">
+              <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+              <div *ngIf="signUpForm.hasError('passwordMismatch') && signUpForm.get('confirmPassword')?.touched" class="text-red-500">
+                Passwords do not match.
+              </div>
+            </div>
+            <br>
+            <div class="inputBx">
+              <input type="text" placeholder="Phone Number" formControlName="phoneNumber">
+              <div *ngIf="signUpForm.get('phoneNumber')?.invalid && signUpForm.get('phoneNumber')?.touched" class="text-red-500">
+                Phone Number must be 10 digits long.
+              </div>
+            </div>
+            <br>
+            <div class="inputBx">
+              <input type="email" placeholder="Email" formControlName="email">
+              <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched" class="text-red-500">
+                Valid Email is required.
+              </div>
+            </div>
+            <br>
 
-
-         
-         <div  class="signin">
-          <h2  *ngIf="!showOtpForm">SignUp</h2>
-          <form  *ngIf="!showOtpForm" [formGroup]="signUpForm" (ngSubmit)="onSubmitSignUpForm()">
-               <div class="inputBx">
-                   <input type="text" placeholder="First Name" formControlName="firstName">
-               </div>
-               <br>
-               <div class="inputBx">
-                   <input type="text" placeholder="Last Name" formControlName="lastName">
-               </div>
-               <br>
-               <div class="inputBx">
-                   <input type="text" placeholder="Username" formControlName="username">
-               </div>
-               <br>
-               <div class="inputBx">
-                   <input type="password" placeholder="Password" formControlName="password">
-               </div>
-               <br>
-               <div class="inputBx">
-                   <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
-               </div>
-               <br>
-               <div class="inputBx">
-                <input type="text" placeholder=" Phone Number" formControlName="phoneNumber">
-               </div>
-               <br>
-               <div class="inputBx">
-                   <input type="email" placeholder="Email" formControlName="email">
-               </div>
-               <br>
-            
-               <div class="inputBx flex justify-center">
-                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 w-72">
-                    {{ 'signup' | uppercase }}
-                </button>
-                
-            </div>    
+            <div class="inputBx flex justify-center">
+              <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 w-72">
+                {{ 'signup' | uppercase }}
+              </button>
+            </div>
             <div class="links">
               <a routerLink="/login">Log in</a>
-            </div>        
-           </form>
+            </div>
+          </form>
 
-
-           <ng-container *ngIf="showOtpForm">
+          <ng-container *ngIf="showOtpForm">
             <h2>Verify OTP</h2>
             <form [formGroup]="otpForm" (ngSubmit)="onSubmitOtpForm()">
               <div class="inputBx">
                 <input type="text" placeholder="Enter OTP" formControlName="otp">
+                <div *ngIf="otpForm.get('otp')?.invalid && otpForm.get('otp')?.touched" class="text-red-500">
+                  OTP is required
+                </div>
               </div>
               <div class="inputBx flex justify-center">
-                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-72">Verify OTP</button>
+                <button type="submit" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-72">
+                  Verify OTP
+                </button>
               </div>
             </form>
-           </ng-container>
-
-           
-           
-           
-        </div>   
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>
 </div>
-     
-     
-  

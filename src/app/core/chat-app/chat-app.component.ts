@@ -57,10 +57,12 @@ export class ChatAppComponent {
         if (params['id'] && params['id'] !== "") {
         const givenData=params['id']
         this.paramBaseId(givenData)
-         
-         
+          
         } else {
           this._userAuthService.listOfChat(this.userId).subscribe((data) => {
+            console.log(data+"------------------------------------------------------------------------------------------999999999999");
+            
+
             if (data) {
               this.listOfData(data);
             }
@@ -169,13 +171,14 @@ export class ChatAppComponent {
 
 
   listOfData(data:any){
+    console.log("-------------------------------------------------------------------");
+    
     this.profilesData = data;
     this.listOfUser(this.profilesData)
   }
   paramBaseId(data: any) {
     this.profilesData.push(data);
     this.listOfUser(this.profilesData)
-   
   }
   
 

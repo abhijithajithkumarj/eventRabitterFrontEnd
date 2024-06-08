@@ -1,11 +1,26 @@
-<!-- File input with custom label -->
-<label for="multiple_files" class="block mb-4 text-sm font-medium text-gray-900 dark:text-white cursor-pointer">
-     Upload multiple files
-     <input id="multiple_files" type="file" multiple class="hidden" (change)="onFileSelected($event)">
-   </label>
-   
+<div class="flex flex-col justify-center items-center">
+  <input type="file" (change)="onFileSelected($event)" class="mt-4 ml-14">
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Place Number</mat-label>
+        <input matInput type="number" formControlName="placeNumber">
+        <mat-error *ngIf="form.get('placeNumber').hasError('required')">Place Number is required</mat-error>
+        <mat-error *ngIf="form.get('placeNumber').hasError('min')">Place Number must be greater than 0</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+        <mat-error *ngIf="form.get('name').hasError('required')">Name is required</mat-error>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
 
-   <input type="number" class="input-style" placeholder="Enter a number">
- 
-   <input type="text" class="input-style" placeholder="Enter some text">
+
+
    
+  
