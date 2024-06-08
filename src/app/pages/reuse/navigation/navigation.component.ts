@@ -33,9 +33,12 @@ export class NavigationComponent implements OnInit {
     else if (this.roll === 'ADMIN') {
       this.router.navigateByUrl('adimdashbord');
     } 
-    // else {
-    //   this.router.navigateByUrl('login');
-    // }
+    else {
+      this.router.navigateByUrl('login');
+    }
+
+    console.log(this.roll);
+    
   }
 
   profilePage() {

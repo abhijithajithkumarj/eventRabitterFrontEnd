@@ -133,13 +133,13 @@ export class EventRegistreationComponent {
       this.cardImageFile,
 
 
-      this.ticketImageFile).subscribe((data)=>{
+    this.ticketImageFile).subscribe((data)=>{
         
-        if(data){
-          this.router.navigate(['/home']);
-        }
+      if(data){
+        this.router.navigate(['/home']);
+      }
         
-      })
+    })
   }
 
 

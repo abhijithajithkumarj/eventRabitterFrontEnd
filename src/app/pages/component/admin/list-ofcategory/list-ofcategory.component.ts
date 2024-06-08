@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthserviceService } from '../../../../core/service/auth/authservice.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddListComponent } from '../add-list/add-list.component';
 
 
 @Component({
@@ -13,9 +15,25 @@ export class ListOfcategoryComponent {
   currentPage: number=1;
 
 
-  constructor(private service: AuthserviceService) {}
+  gatherGrove:any [] = [];
+  individualCategory:any [] = [];
+  teamCategory:any [] = [];
+
+  gath:boolean = false;
+  indiv:boolean = false;
+  team:boolean = false;
+  
+
+
+  constructor(private service: AuthserviceService
+   
+  ) {}
 
   ngOnInit(): void {
+
+
+    
+
     this.service.getListOfCategory().subscribe(
       (data: any[]) => {
         this.listOfCategory = data;
@@ -28,17 +46,10 @@ export class ListOfcategoryComponent {
     this.currentPage = 1;
   }
 
+ 
+ 
 
-  pageChanged(event: any): void {
-      this.currentPage = event.page;
-  }
+
   
 
-  toggleEdit(category: any): void {
-   
-  }
-
-  deleteCategory(category: any): void {
-   
-  }
 }

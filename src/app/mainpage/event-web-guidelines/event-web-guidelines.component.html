@@ -4,12 +4,13 @@
 </div>
 
 <button (click)="openImagePopUp() " class="text-white">Add Image</button>
-
-<div class="h-[100vh] w-[100vw] bg-purple-700">
+  <div *ngFor="let img of imagefile; trackBy: trackByPlaceNumber" class="h-[100vh] w-[100vw] bg-purple-700">
      <div class="relative h-[100vh] w-[100vw] bg-purple-700">
-          <img src="" class="h-[100vh] w-[100%]" alt="">
-        </div>     
-</div>
+       <img [src]="img.imageUrl" class="h-[100vh] w-[100%] object-cover" [alt]="img.name" >
+     </div>
+  </div>
+   
+
 
 
 

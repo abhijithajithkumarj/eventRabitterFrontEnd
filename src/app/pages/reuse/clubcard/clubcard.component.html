@@ -14,7 +14,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 container">
       <ng-container *ngFor="let person of filteredProfessionals">
         <div *ngIf="userId !== person.id" class="p-3 rounded-lg" style="background: linear-gradient(30deg, rgb(15, 0, 14), rgb(82, 2, 92), rgb(198, 19, 234));">
-          <img [src]="person.imageUrl" alt="Event Image" class="rounded-lg mb-2" style="width: 350px; height: 200px;">
+          <img [src]="person.imageUrl" alt="Event Image" class="rounded-lg mb-2  object-cover" style="width: 350px; height: 200px;">
           <h3 class="font-semibold text-white">{{ person.username }}</h3>
           <button class="font-semibold text-white" [routerLink]="['/userpage']" [queryParams]="{ id: person.id }">
             Go to User Profile
