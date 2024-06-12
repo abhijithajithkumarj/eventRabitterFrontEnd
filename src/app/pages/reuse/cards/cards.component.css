@@ -182,8 +182,9 @@
    }
    
    .card .content .details .actionBtn {
-     display: flex;
+ 
      justify-content: space-between;
+     width: 100%;
    }
    
    .card .content .details .actionBtn button {
@@ -197,6 +198,7 @@
      color: white;
      cursor: pointer;
      opacity: 0.9;
+     display: flex;
    }
    
    .card .content .details .actionBtn button:nth-child(2) {

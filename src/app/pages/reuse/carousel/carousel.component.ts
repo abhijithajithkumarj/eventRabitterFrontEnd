@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthserviceService } from '../../../core/service/auth/authservice.service';
 
 @Component({
   selector: 'app-carousel',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './carousel.component.css'
 })
 export class CarouselComponent {
-  ngOnInit(): void {}
+
+
+
+  
 
 }

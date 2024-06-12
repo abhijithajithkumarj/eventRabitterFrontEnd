@@ -31,19 +31,59 @@ export class ListOfcategoryComponent {
 
   ngOnInit(): void {
 
-
-    
-
-    this.service.getListOfCategory().subscribe(
+    this.service.getAllGatherGrove().subscribe(
       (data: any[]) => {
         this.listOfCategory = data;
+        console.log(this.listOfCategory);
+        
       },
       (error) => {
         console.error('Error fetching categories:', error);
       }
     );
 
+    this.service.getAllGatherGrove().subscribe(
+      (data: any[]) => {
+        this.listOfCategory = data;
+        console.log(this.listOfCategory);
+        
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+
+       this.service.getAllGatherGrove().subscribe(
+      (data: any[]) => {
+        this.listOfCategory = data;
+        console.log(this.listOfCategory);
+        
+      },
+      (error) => {
+        console.error('Error fetching categories:', error);
+      }
+    );
+
+   
+
     this.currentPage = 1;
+  }
+
+  setIndivAndTeamFalse() {
+    this.gath=false;
+    this.indiv = false;
+    this.team = true;
+  }
+  setGatherd(){
+    this.gath=true;
+    this.indiv = false;
+    this.team = false;
+  }
+
+  setIndi(){
+    this.gath=false;
+    this.indiv = true;
+    this.team = false;
   }
 
  

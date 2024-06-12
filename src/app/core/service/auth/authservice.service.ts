@@ -136,8 +136,8 @@ export class AuthserviceService {
     return this.http.get<any>(`notification-chat/get/Notification/${userId}`);
   }
 
-  eventCreat(id: string[], eventCreator: string): Observable<any> {
-    const body = { id, eventCreator };
+  eventCreat(id: string[], eventCreator: string, dateTime:Date): Observable<any> {
+    const body = { id, eventCreator,dateTime };
     return this.http.post<any>(
       'event-create-booking/select/event-create',
       body
@@ -291,6 +291,10 @@ export class AuthserviceService {
     return this.http.get<any>("user/get-images-guidelines")
   }
 
+  getTopNinve(): Observable<any> {
+    return this.http.get<any>('event-create-booking/get-top-nine')
+  }
+
   saveGatherGroveList(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
     return this.http.post<ListOfCategoryDto[]>("user/save/gatherGrove",list)
   }
@@ -299,6 +303,19 @@ export class AuthserviceService {
   }
   teamCategory(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
     return this.http.post<ListOfCategoryDto[]>("user/save/teamCategory",list)
+  }
+
+
+  getAllGatherGrove(): Observable<any[]> {
+    return this.http.get<any[]>('user/get/gatherGrove');
+  }
+
+  getAllIndividualCategory(): Observable<any[]> {
+    return this.http.get<any>(`user/get/individualCategory`);
+  }
+
+  getAllTeamCategory(): Observable<any[]> {
+    return this.http.get<any>(`user/get/teamCategory`);
   }
 
 

@@ -4,7 +4,14 @@
       <h2 class="text-lg font-bold mb-4">Select Event Team</h2>
       <button type="button" class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" (click)="setTeam()">Set Team</button>
       <div class="flex items-center">
-        <input type="date" class="bg-zinc-800 p-2 rounded text-white mr-2" [(ngModel)]="selectedDate">
+        <input 
+        type="date" 
+        class="bg-zinc-800 p-2 rounded text-white mr-2" 
+        [(ngModel)]="selectedDate" 
+        (change)="onDateChange()"
+        [min]="minDate"
+        required>
+    
       </div>
       <div class="flex items-center">
         <input type="text" class="bg-zinc-800 p-2 rounded text-white mr-2" placeholder="Search by GatherGrove Name" [(ngModel)]="searchTerm" (ngModelChange)="filterProfessionals()">
@@ -14,19 +21,25 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 container">
       <ng-container *ngFor="let person of filteredProfessionals">
         <div *ngIf="userId !== person.id" class="p-3 rounded-lg" style="background: linear-gradient(30deg, rgb(15, 0, 14), rgb(82, 2, 92), rgb(198, 19, 234));">
-          <img [src]="person.imageUrl" alt="Event Image" class="rounded-lg mb-2  object-cover" style="width: 350px; height: 200px;">
-          <h3 class="font-semibold text-white">{{ person.username }}</h3>
-          <button class="font-semibold text-white" [routerLink]="['/userpage']" [queryParams]="{ id: person.id }">
-            Go to User Profile
-          </button>
-          
+          <img [src]="person.imageUrl" alt="Event Image" class="rounded-lg mb-2  object-cover" style="width: 350px; height: 200px;"  [routerLink]="['/userpage']"
+          [queryParams]="{ id: person.id }" >
+          <h1 class="font-semibold text-white">{{ person.username }}</h1>
+         
           <ng-container *ngIf="!person.added && selectedDate">
-            <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" (click)="AddTeam(person, person.id); person.added = true;">
+            &nbsp; 
+          <button type="button" class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"  (click)="AddTeam (person, person.id); person.added = true;">
+              
               Add
             </button>
           </ng-container>
           <p class="text-sm text-zinc-300">Min 50% off 50000</p>
-          <p class="text-xs text-zinc-400">Luxus Resort is a beautiful resort nestled along pristine coastal landscapes, offering world-class amenities and personalized services.</p>
+          <p class="text-xs text-zinc-400">
+            {{ person.username }} is a registered user known for their engaging profile and active community participation.
+            Bio: "{{ person.bio }}", Description: "{{ person.description }}". 
+          
+          </p>
+          
+         
         </div>
       </ng-container>
     </div>

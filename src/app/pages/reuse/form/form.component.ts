@@ -210,4 +210,9 @@ export class FormComponent implements OnInit, AfterViewInit {
         console.log(result);
       });
   }
+
+
+  removeName(name: string): void {
+    this.nameOFMembers = this.nameOFMembers.filter(member => member !== name);
+  }
 }
