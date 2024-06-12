@@ -9,6 +9,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
+
   constructor(
     private service: AuthserviceService, 
     private router: Router,
@@ -71,4 +72,14 @@ export class NavigationComponent implements OnInit {
   eventCard() {
     this.router.navigateByUrl('eventTicketPlace');
     }
+
+
+
+    eventHome() {
+      if (this.roll !== undefined) {
+        this.router.navigateByUrl('home');
+      } else {
+        this.router.navigateByUrl('login');
+      }
+      }
 }

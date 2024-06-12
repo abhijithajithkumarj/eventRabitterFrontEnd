@@ -60,9 +60,6 @@ export class ChatAppComponent {
           
         } else {
           this._userAuthService.listOfChat(this.userId).subscribe((data) => {
-            console.log(data+"------------------------------------------------------------------------------------------999999999999");
-            
-
             if (data) {
               this.listOfData(data);
             }

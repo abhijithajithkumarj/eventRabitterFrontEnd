@@ -31,7 +31,7 @@ import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/eve
 
 const routes: Routes =
 [
-  {path:'',redirectTo:'chat', pathMatch: 'full'},
+  {path:'',redirectTo:'home', pathMatch: 'full'},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'home',component:HomeComponent,},

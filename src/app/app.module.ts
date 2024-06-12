@@ -59,6 +59,7 @@ import { ChartOfEventRabbiterComponent } from './pages/chart-of-event-rabbiter/c
 import { ChartModule } from 'primeng/chart';
 import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/event-web-guidelines.component';
 import { ImageAddMainPageComponent } from './mainpage/image-add-main-page/image-add-main-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -132,6 +133,7 @@ import { ImageAddMainPageComponent } from './mainpage/image-add-main-page/image-
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    BrowserAnimationsModule,
  
 
    

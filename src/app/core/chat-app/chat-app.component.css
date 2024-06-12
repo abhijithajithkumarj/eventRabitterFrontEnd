@@ -2,3 +2,29 @@
   overflow-y: auto;
   height: 70vh;
 }
+
+.chat-sidebar {
+  background-color: #1a1a2e;
+}
+
+.chat-main {
+  background-color: #16213e;
+}
+
+.chat-room {
+  background-color: #0f3460;
+}
+
+.messages {
+  background-color: #1a1a2e;
+}
+
+.my-message {
+  background-color: #1e76e290;
+
+}
+
+.other-message {
+  background-color: #6cea1297;
+  
+}

@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthserviceService } from '../../../core/service/auth/authservice.service';
 import { DateOfEvent } from '../../../core/models/dataOfEvent';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clubcard',
@@ -8,7 +9,7 @@ import { DateOfEvent } from '../../../core/models/dataOfEvent';
   styleUrl: './clubcard.component.css',
 })
 export class ClubcardComponent {
-  constructor(private service: AuthserviceService) {}
+
   professionals: any[] = [];
   showData: any[] = [];
   id: string[] = [];
@@ -17,8 +18,16 @@ export class ClubcardComponent {
   searchTerm: string = '';
   selectedDate: Date;
   filteredProfessionals: any[] = [];
+  minDate: string;
 
   add=false;
+    constructor(
+      private service: AuthserviceService
+      ,private router: Router
+    
+    ) {
+    this.minDate = this.calculateMinDate();
+  }
 
 
 
@@ -27,14 +36,9 @@ export class ClubcardComponent {
     this.userId=this.service.getUserFromLocalStorage();
     this.service.getAllProfessionals().subscribe(data => {
       console.log(data);
-      
       this.professionals = data;
       this.filterProfessionals();
     });
-
-   
-    
-
     this.eventCreator = this.service.getUserFromLocalStorage();
   }
 
@@ -43,9 +47,6 @@ export class ClubcardComponent {
       if (!this.id.includes(id)) {
         this.id.push(id);
         this.showData.push(person);
-        const date: DateOfEvent={
-          localDate: this.selectedDate
-        }
       } else {
         console.log(`ID ${id} already exists in the team array.`);
       }
@@ -68,13 +69,27 @@ export class ClubcardComponent {
   }
 
   setTeam(): void {
-    this.service.eventCreat(this.id, this.eventCreator).subscribe((data) => {
-      console.log(data);
+    
+    this.service.eventCreat(this.id,this.eventCreator,this.selectedDate).subscribe((data) => {
+      this.router.navigate(['/EventSetUp']);
     });
   }
 
-  updateDate(event: any) {
-    this.selectedDate = event.target.value;
+  updateProfectional() {
+    const date:DateOfEvent={
+      localDate: this.selectedDate
+    }
+    this.service.getUserSpecificDate(date).subscribe((data) => {
+      this.filteredProfessionals = data;
+      console.log(data);
+      
+    })
+  }
+
+  onDateChange(): void {
+    if (this.selectedDate) {
+      this.updateProfectional();
+    }
   }
 
   filterProfessionals(): void {
@@ -85,6 +100,17 @@ export class ClubcardComponent {
       (person.individualCategory && person.individualCategory.individualCategoryName.toLowerCase().includes(searchTermLower)) ||
       (person.teamCategory && person.teamCategory.teamCategoryName.toLowerCase().includes(searchTermLower))
     );
+  }
+
+  calculateMinDate(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = (today.getMonth() + 1).toString();
+    let day = today.getDate().toString();
+    month = month.length === 1 ? '0' + month : month;
+    day = day.length === 1 ? '0' + day : day;
+
+    return `${year}-${month}-${day}`;
   }
  
   
