@@ -14,7 +14,7 @@ export class MessageAndNotificationService {
   public message$ = this.messageSubject.asObservable();
 
   initConnenctionSocket(chatRoomName: string): void {
-    const url = 'http://localhost:4444/ws';
+    const url = 'http://3.7.146.10:4444/ws';
     const socket = new SockJS(url);
     this.stompClient = Stomp.over(socket);
     const chatRoomTopic = `topic/${chatRoomName}`;

@@ -1,4 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthserviceService } from '../../core/service/auth/authservice.service';
 
 @Component({
   selector: 'app-chart-of-event-rabbiter',
@@ -7,16 +9,62 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 })
 export class ChartOfEventRabbiterComponent implements OnInit {
 
-  basicData: any;
 
+
+  basicData: any;
   basicOptions: any;
   data: any;
+  currentUserId:string
+  eventData:any[]=[]
+  selectedEvent: string | undefined;
+
+
+  constructor(
+    private service:AuthserviceService
+    ,private router:ActivatedRoute,
+    private route: Router
+  ){}
 
   options: any;
-  @HostBinding('class') themeClass = 'light-theme'; // Default to light theme
+  @HostBinding('class') themeClass = 'light-theme'; 
 
 
   ngOnInit() {
+    this.maps()
+    this.currentUserId=this.service.getUserFromLocalStorage();
+
+    this.service.getAllEventsReport(this.currentUserId).subscribe((data)=>{
+     this.eventData = data;
+     console.log(this.eventData);
+    })
+    
+  }
+
+
+  onEventChange(event: any): void {
+    this.selectedEvent = event.target.value;
+    console.log('Selected Event ID:', this.selectedEvent);
+    this.onSubmit();
+  }
+  onSubmit(): void {
+    console.log('Selected Event:', this.selectedEvent);
+    
+  }
+
+
+ 
+
+
+  toggleTheme() {
+    this.themeClass = this.themeClass === 'light-theme' ? 'dark-theme' : 'light-theme';
+  }
+
+
+
+
+
+
+  maps(){
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
@@ -100,11 +148,6 @@ export class ChartOfEventRabbiterComponent implements OnInit {
         }
     };
 
-    
-  }
 
-
-  toggleTheme() {
-    this.themeClass = this.themeClass === 'light-theme' ? 'dark-theme' : 'light-theme';
   }
 }

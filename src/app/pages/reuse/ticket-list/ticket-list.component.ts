@@ -29,6 +29,9 @@ export class TicketListComponent {
     });
   }
 
+  deleteTicket(ticketId: number): void {
+   
+  }
 
   
 

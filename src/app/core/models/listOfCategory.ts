@@ -1,5 +1,5 @@
 
 export interface ListOfCategoryDto {
-     name: string;
+     category: string;
 }
    

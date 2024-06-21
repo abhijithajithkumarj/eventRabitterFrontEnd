@@ -91,6 +91,11 @@ img {
   font-size: 0.95rem;
   line-height: 1.5;
 }
+.active {
+  background-color: #4c51bf;
+  color: white;
+}
+
 
 
 .card .card-img-overlay {

@@ -17,7 +17,6 @@ import { User } from '../../models/user.model';
 import { ProfileData } from '../../models/profileData';
 import { TeamData } from '../../models/teamData';
 import { TeamProfileEventPlace } from '../../models/teamProfileEventPlace';
-
 import { FormGroup } from '@angular/forms';
 import { UserId } from '../../models/userIds';
 import { NotificationReaction } from '../../models/notificationReplay';
@@ -38,20 +37,41 @@ export class AuthserviceService {
   private jwtTokenSubject!: BehaviorSubject<string | null>;
   baseUrl: any;
 
-
-  constructor(
-    private http: HttpClient,
-    private router:Router
-  
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const token = this.getTokenLocalStorage();
+    if (token) {
+      this.setLogoutTimer(token);
+    }
+  }
 
   setTokenLocalStorage(token: string) {
     localStorage.setItem('token', token);
+    this.setLogoutTimer(token);
   }
 
   getTokenLocalStorage() {
     const token = localStorage.getItem('token');
+    if (token && this.isTokenExpired(token)) {
+      this.logout();
+      return null;
+    }
     return token;
+  }
+
+  isTokenExpired(token: string): boolean {
+    const decodedToken: any = this.decodeToken(token);
+    const expirationDate = decodedToken.exp * 1000;
+    return Date.now() > expirationDate;
+  }
+
+  setLogoutTimer(token: string) {
+    const decodedToken: any = this.decodeToken(token);
+    const expirationDate = decodedToken.exp * 1000;
+    const timeout = expirationDate - Date.now();
+
+    setTimeout(() => {
+      this.logout();
+    }, timeout);
   }
 
   register(userRegistration: any): Observable<any> {
@@ -78,13 +98,11 @@ export class AuthserviceService {
     return this.http.post<any>('user/saveList', category);
   }
 
-
-
   getAllProfessionals(): Observable<any> {
     return this.http.get<any>('user/getAllProfessionals').pipe(
       catchError((error: any) => {
         console.error('Error fetching professionals:', error);
-        return throwError(error); 
+        return throwError(error);
       })
     );
   }
@@ -136,23 +154,26 @@ export class AuthserviceService {
     return this.http.get<any>(`notification-chat/get/Notification/${userId}`);
   }
 
-  eventCreat(id: string[], eventCreator: string, dateTime:Date): Observable<any> {
-    const body = { id, eventCreator,dateTime };
+  eventCreat(
+    id: string[],
+    eventCreator: string,
+    dateTime: Date
+  ): Observable<any> {
+    const body = { id, eventCreator, dateTime };
     return this.http.post<any>(
       'event-create-booking/select/event-create',
       body
     );
   }
 
-  eventNotificationReaction(notification:NotificationReaction): Observable<any> {
-  
+  eventNotificationReaction(
+    notification: NotificationReaction
+  ): Observable<any> {
     return this.http.post<any>(
       'notification-chat/event/notification/reaction',
       notification
     );
   }
-
- 
 
   uploadImage(imageFile: File): Observable<any> {
     const formData: FormData = new FormData();
@@ -193,46 +214,45 @@ export class AuthserviceService {
   ): Observable<any> {
     const formData: FormData = new FormData();
 
-   
     formData.append('creatorId', creatorId);
     formData.append('setUpTheEventDto', JSON.stringify(setUpEventForm));
     formData.append('bannerImage', bannerImages);
     formData.append('ticketImage', ticketImages);
     formData.append('cardImage', cardImages);
 
+    return this.http.post<any>(`event-create-booking/setup/event`, formData);
+  }
+
+  createTracsaction(amount: number): Observable<any> {
     return this.http.post<any>(
-      `event-create-booking/setup/event`,
-      formData
+      `event-create-booking/createTransaction/${amount}`,
+      {}
     );
   }
 
-  createTracsaction(amount:number):Observable<any>{
-    return this.http.post<any>(`event-create-booking/createTransaction/${amount}`,{});
-  }
-
-  profileImageSet(userId:string,imageFile:File):Observable<any>{
+  profileImageSet(userId: string, imageFile: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('image', imageFile);
     formData.append('userId', userId);
-    return this.http.post<any>("user/set/profile/photo",formData)
+    return this.http.post<any>('user/set/profile/photo', formData);
   }
-
-
 
   getListOfUsers(userData: UserId): Observable<any> {
-    return this.http.post<any>("user/get/user/list", userData);
+    return this.http.post<any>('user/get/user/list', userData);
   }
-
 
   getConformationEvent(eventId: NotificationStatus): Observable<any> {
-    return this.http.post<any>(`notification-chat/notification/status`,eventId)
+    return this.http.post<any>(
+      `notification-chat/notification/status`,
+      eventId
+    );
   }
 
-  getIsEventCreated(eventId:string): Observable<any> {
-    return this.http.get<any>(`event-create-booking/isCreated/event/${eventId}`)
+  getIsEventCreated(eventId: string): Observable<any> {
+    return this.http.get<any>(
+      `event-create-booking/isCreated/event/${eventId}`
+    );
   }
-
-
 
   extractUsername(): string | null {
     const jwtTok = localStorage.getItem('jwt');
@@ -246,37 +266,41 @@ export class AuthserviceService {
     }
   }
 
-  getEvetDataWithGroup(userId:string):Observable<any>{
+  getEvetDataWithGroup(userId: string): Observable<any> {
     return this.http.get(`event-create-booking/get/event/byGroup/${userId}`);
   }
 
-
-  getEventCards():Observable<any>{
-    return this.http.get(`event-create-booking/get/event/card`)
+  getEventCards(): Observable<any> {
+    return this.http.get(`event-create-booking/get/event/card`);
   }
 
-  getEventForBooking(eventId:string):Observable<any>{
-    return this.http.get(`event-create-booking/get/event/for/booking/${eventId}`)
+  getEventForBooking(eventId: string): Observable<any> {
+    return this.http.get(
+      `event-create-booking/get/event/for/booking/${eventId}`
+    );
   }
 
-  getTicket(eventId:string):Observable<any>{
-    return this.http.get(`event-create-booking/get/ticket/${eventId}`)
+  getTicket(eventId: string): Observable<any> {
+    return this.http.get(`event-create-booking/get/ticket/${eventId}`);
   }
 
-  paymentDetails(pamentDetails:TicketBooking):Observable<any>{
-    return this.http.post("event-create-booking/payment/details",pamentDetails)
+  paymentDetails(pamentDetails: TicketBooking): Observable<any> {
+    return this.http.post(
+      'event-create-booking/payment/details',
+      pamentDetails
+    );
   }
 
   getUserSpecificDate(localDate: DateOfEvent): Observable<any> {
-    return this.http.post("user/get/users/date",localDate);
+    return this.http.post('user/get/users/date', localDate);
   }
 
-  listOfChat(eventId:string): Observable<any> {
-    return this.http.get(`notification-chat/list-of-sender/${eventId}`)
+  listOfChat(eventId: string): Observable<any> {
+    return this.http.get(`notification-chat/list-of-sender/${eventId}`);
   }
 
-  listOfTickets(eventId:string): Observable<any> {
-    return this.http.get(`event-create-booking/get-list-of/ticket/${eventId}`)
+  listOfTickets(eventId: string): Observable<any> {
+    return this.http.get(`event-create-booking/get-list-of/ticket/${eventId}`);
   }
 
   uplodeGuidelineImage(file: File, name: string, num: number): Observable<any> {
@@ -284,27 +308,35 @@ export class AuthserviceService {
     formData.append('image', file, file.name);
     formData.append('name', name);
     formData.append('number', num.toString());
-    return this.http.post<any>("user/event-rabitter-image",formData)
+    return this.http.post<any>('user/event-rabitter-image', formData);
   }
 
-  getGuidelineImage():Observable<any> {
-    return this.http.get<any>("user/get-images-guidelines")
+  getGuidelineImage(): Observable<any> {
+    return this.http.get<any>('user/get-images-guidelines');
   }
 
   getTopNinve(): Observable<any> {
-    return this.http.get<any>('event-create-booking/get-top-nine')
+    return this.http.get<any>('event-create-booking/get-top-nine');
   }
 
-  saveGatherGroveList(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
-    return this.http.post<ListOfCategoryDto[]>("user/save/gatherGrove",list)
-  }
-  individualCategory(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
-    return this.http.post<ListOfCategoryDto[]>("user/save/individualCategory",list)
-  }
-  teamCategory(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]>{
-    return this.http.post<ListOfCategoryDto[]>("user/save/teamCategory",list)
+  saveGatherGroveList(
+    list: ListOfCategoryDto[]
+  ): Observable<ListOfCategoryDto[]> {
+    return this.http.post<ListOfCategoryDto[]>('user/save/gatherGrove', list);
   }
 
+  
+  individualCategory(
+    list: ListOfCategoryDto[]
+  ): Observable<ListOfCategoryDto[]> {
+    return this.http.post<ListOfCategoryDto[]>(
+      'user/save/individualCategory',
+      list
+    );
+  }
+  teamCategory(list: ListOfCategoryDto[]): Observable<ListOfCategoryDto[]> {
+    return this.http.post<ListOfCategoryDto[]>('user/save/teamCategory', list);
+  }
 
   getAllGatherGrove(): Observable<any[]> {
     return this.http.get<any[]>('user/get/gatherGrove');
@@ -319,11 +351,18 @@ export class AuthserviceService {
   }
 
 
+  getReportData(creatorId: string): Observable<any>{
+    return this.http.get<any>(`event-create-booking/all-booking-data/${creatorId}`);
+  } 
+
+  getAllEventsReport(creatorId: string): Observable<any>{
+    return this.http.get<any>(`event-create-booking/get-all-events-report/${creatorId}`);
+  } 
+
   setUserIdInLocalStorage(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
- 
   getUserFromLocalStorage() {
     const userDataString = localStorage.getItem('user');
     if (userDataString) {
@@ -336,7 +375,7 @@ export class AuthserviceService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 
   getUserRoleLocalStorage() {
@@ -347,7 +386,22 @@ export class AuthserviceService {
       return userRole;
     }
   }
+
+  decodeToken(token: string): any {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    } catch (error) {
+      console.error('Invalid token:', error);
+      return null;
+    }
+  }
 }
+
 function jwt_decode(jwtTok: string): any {
   throw new Error('Function not implemented.');
 }

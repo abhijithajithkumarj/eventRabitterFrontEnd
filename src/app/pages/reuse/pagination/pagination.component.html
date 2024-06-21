@@ -1,0 +1,25 @@
+<div class="flex justify-center my-4">
+  <nav class="block">
+    <ul class="flex pl-0 rounded list-none flex-wrap">
+      <!-- Previous button -->
+      <li *ngIf="currentPage > 1"
+          (click)="previousPage()"
+          class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 cursor-pointer items-center justify-center rounded-full leading-tight relative border border-gray-400 bg-red-500 text-white hover:bg-red-700">
+        Pre
+      </li>
+      <!-- Page numbers -->
+      <li *ngFor="let page of pageRange" 
+          (click)="changePage(page)"
+          [class.active]="page === currentPage"
+          class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 cursor-pointer items-center justify-center rounded-full leading-tight relative border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+        {{ page }}
+      </li>
+      <!-- Next button -->
+      <li *ngIf="currentPage < totalPages"
+          (click)="nextPage()"
+          class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 cursor-pointer items-center justify-center rounded-full leading-tight relative border border-gray-400 bg-red-500 text-white hover:bg-red-700">
+        Next
+      </li>
+    </ul>
+  </nav>
+</div>

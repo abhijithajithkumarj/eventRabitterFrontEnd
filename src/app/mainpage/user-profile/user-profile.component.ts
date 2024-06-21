@@ -36,6 +36,7 @@ throw new Error('Method not implemented.');
   ngOnInit(): void {
 
     this.currentUserId=this.service.getUserFromLocalStorage();
+    
     this.router.queryParams.subscribe((param) => {
       if (param['id'] && param['id'] !== "") {
         this.userId = param['id'];
