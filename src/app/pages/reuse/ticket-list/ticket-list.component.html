@@ -6,16 +6,21 @@
 <div class="parent">
   @if (tickets!==null){
   @for(ticket of tickets; track ticket){
-  <button class="card"  [routerLink]="['/eventTicket']" [queryParams]="{ bookId: ticket.id }" >
-    <img class="card-image" [src]="ticket.setUpTheEvent.cardImage.imageUrl" />
+  <button class="card"  >
+    <img class="card-image" [src]="ticket.setUpTheEvent.cardImage.imageUrl"  [routerLink]="['/eventTicket']" [queryParams]="{ bookId: ticket.id }" />
     <p class="card-title">EVENT CREATER <br>{{ticket.setUpTheEvent.creatorId.username}} </p>
     <p class="small-desc">
-     
     </p>
     <div class="go-corner">
       <div class="go-arrow">→</div>
     </div>
+    <!-- <button>
+      <i class="fa-solid fa-trash text-red-700 text-2xl"></i>
+    </button> -->
+    
   </button>
+
+  
   }
   } @else{
   <a

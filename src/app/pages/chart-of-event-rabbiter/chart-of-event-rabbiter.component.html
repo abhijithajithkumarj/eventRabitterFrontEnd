@@ -1,22 +1,39 @@
 <div class="superParent">
-    <div class="booking-title">
-        Booking Chart
+  <div class="booking-title">
+    Booking Chart
+  </div>
+  <div class="parent">
+    <div class="card small-chart flex-container">
+
+        <form class="max-w-sm mx-auto">
+            <label for="events" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Select an option
+            </label>
+            <select id="events" [(ngModel)]="selectedEvent" name="event" (change)="onEventChange($event)"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required>
+              <option *ngFor="let item of eventData" [value]="item.id">
+                {{ item.eventName }}
+              </option>
+            </select>
+          </form>
+          
+      <div class="chart-container">
+        <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+      </div>
     </div>
-    <div class="parent">
-        <div class="card small-chart">
-            <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
-        </div>
+  </div>
+
+
+  <div class="booking-title">
+    Programing Details
+  </div>
+  <div class="parent">
+    <div class="card-container">
+      <div class="card">
+        <p-chart type="polarArea" [data]="data" [options]="options"></p-chart>
+      </div>
     </div>
 
-    <div class="booking-title">
-        Programing Details
-    </div>
-    <div class="parent">
-        <div class="card-container">
-            <div class="card">
-                <p-chart type="polarArea" [data]="data" [options]="options"></p-chart>
-            </div>
-        </div>
-        
-    </div>
+  </div>
 </div>

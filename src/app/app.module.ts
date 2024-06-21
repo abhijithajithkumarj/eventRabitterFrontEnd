@@ -60,6 +60,7 @@ import { ChartModule } from 'primeng/chart';
 import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/event-web-guidelines.component';
 import { ImageAddMainPageComponent } from './mainpage/image-add-main-page/image-add-main-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginationComponent } from './pages/reuse/pagination/pagination.component';
 
 
 
@@ -105,6 +106,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChartOfEventRabbiterComponent,
     EventWebGuidelinesComponent,
     ImageAddMainPageComponent,
+    PaginationComponent,
 
    
   ],

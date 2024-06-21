@@ -1,21 +1,44 @@
+
 <div class="parent">
-  <div class="card" *ngFor="let card of cards">
+  <div class="card" *ngFor="let card of paginatedCards">
     <div class="rectangle"></div>
     <div class="card-img">
-      <img
-        [src]="card.cardImage.imageUrl"
-        alt="Herse Headman">
+      <img [src]="card.cardImage.imageUrl" alt="Herse Headman">
       <div class="card-img-overlay">
-        <p routerLink="/buyingPlace"  [queryParams]="{ id: card.id, eventId: card.eventSetup.id }"> BUY <br />NOW</p>
+        <p routerLink="/buyingPlace" [queryParams]="{ id: card.id, eventId: card.eventSetup.id }"> BUY <br />NOW</p>
       </div>
     </div>
     <div class="card-content">
-      <h2>{{card.creatorId
-        .username}} </h2>
-      <h3>{{card.creatorId
-        .username}} </h3>
-      <p>{{card.placeName}} </p>
+      <h2>{{card.creatorId.username}}</h2>
+      <h3>{{card.creatorId.username}}</h3>
+      <p>{{card.placeName}}</p>
     </div>
   </div>
   
+  <nav class="block">
+    <ul class="flex pl-0 rounded list-none flex-wrap">
+      <li *ngIf="currentPage > 1"
+          (click)="prevPage()"
+          class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 cursor-pointer items-center justify-center rounded-full leading-tight relative border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+        Prev
+      </li>
+      <li *ngFor="let page of pageRange"
+          (click)="changePage(page)"
+          [class.active]="page === currentPage"
+          class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 cursor-pointer items-center justify-center rounded-full leading-tight relative border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+        {{ page }}
+      </li>
+      <li *ngIf="currentPage < totalPages"
+          (click)="nextPage()"
+          class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 cursor-pointer items-center justify-center rounded-full leading-tight relative border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+        Next
+      </li>
+    </ul>
+  </nav>
+  
 </div>
+
+
+
+ 
+
