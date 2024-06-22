@@ -7,8 +7,10 @@ export const AuthGuard: CanActivateFn = () => {
   if (localStorage.getItem('user')) {
     console.log('User authenticated');
     return true;
+  }else{
+    console.log('User not authenticated, redirecting to login');
+    router.navigate(['/login']);
+    return false;
   }
-  console.log('User not authenticated, redirecting to login');
-  router.navigate(['/login']);
-  return false;
+  
 };
