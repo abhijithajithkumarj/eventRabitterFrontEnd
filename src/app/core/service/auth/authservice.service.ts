@@ -254,6 +254,10 @@ export class AuthserviceService {
     );
   }
 
+  getToken(): string | null {
+    return localStorage.getItem('jwt');
+  }
+
   extractUsername(): string | null {
     const jwtTok = localStorage.getItem('jwt');
     if (jwtTok) {
