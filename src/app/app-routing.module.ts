@@ -28,17 +28,18 @@ import { EventCreateDetailsComponent } from './pages/reuse/event-create-details/
 import { EventBookingPageCardsComponent } from './pages/event-booking-page-cards/event-booking-page-cards.component';
 import { ChartOfEventRabbiterComponent } from './pages/chart-of-event-rabbiter/chart-of-event-rabbiter.component';
 import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/event-web-guidelines.component';
+import { AuthGuard } from './core/routerGuard/AuthGuard';
 
 const routes: Routes =
 [
   {path:'',redirectTo:'home', pathMatch: 'full'},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'home',component:HomeComponent,},
-  {path:'controller',component:ControllMenuComponent},
-  {path:'form',component:FormComponent},
-  {path:'clubcard',component:ClubcardComponent},
-  {path:'adimdashbord',component:AdminDashbordComponent},
+  {path:'home',component:HomeComponent, canActivate: [AuthGuard]},
+  {path:'controller',component:ControllMenuComponent, canActivate: [AuthGuard]},
+  {path:'form',component:FormComponent, canActivate: [AuthGuard]},
+  {path:'clubcard',component:ClubcardComponent, canActivate: [AuthGuard]},
+  {path:'adimdashbord',component:AdminDashbordComponent, canActivate: [AuthGuard]},
   {path:'userpage',component:UserProfileComponent},
   {path:'notification',component:NotificationComponent},
   {path: 'gmap',component:PlaceAutocompleteComponent},
