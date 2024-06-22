@@ -6,8 +6,8 @@ export const AuthGuard:CanActivateFn=() => {
   if(localStorage.getItem("user")){
     return true;
   }
-
   router.navigate(['/login']);
   return false;
+  
 }
 
