@@ -20,7 +20,7 @@ export class HttpInterceptorServiceService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
 
     
-    const BASE_URL = 'http://3.7.146.10:3333/api/v1/';
+    const BASE_URL = 'https://api.eventrabbiter.online/api/v1/';
 
     let apiRequest = req.clone({
       url: BASE_URL + req.url,
