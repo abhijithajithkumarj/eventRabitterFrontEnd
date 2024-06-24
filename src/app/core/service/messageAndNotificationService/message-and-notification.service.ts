@@ -14,7 +14,7 @@ export class MessageAndNotificationService {
   public message$ = this.messageSubject.asObservable();
 
   initConnenctionSocket(chatRoomName: string): void {
-    const url = 'http://65.1.142.44:4444/ws';
+    const url = 'https://65.1.142.44:4444/ws';
     const socket = new SockJS(url);
     this.stompClient = Stomp.over(socket);
     const chatRoomTopic = `topic/${chatRoomName}`;
@@ -35,7 +35,7 @@ export class MessageAndNotificationService {
 
     if (!this.stompClient || !this.stompClient.connected) {
       console.error('WebSocket connection not established.');
-      return roomSubject.asObservable(); // Return an empty observable or handle as per your needs
+      return roomSubject.asObservable(); 
     }
 
     const subscription = this.stompClient.subscribe(
