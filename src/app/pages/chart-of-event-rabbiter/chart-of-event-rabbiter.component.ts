@@ -8,83 +8,69 @@ import { AuthserviceService } from '../../core/service/auth/authservice.service'
   styleUrls: ['./chart-of-event-rabbiter.component.css']
 })
 export class ChartOfEventRabbiterComponent implements OnInit {
-
-
-
-  basicData: any;
-  basicOptions: any;
-  data: any;
-  currentUserId:string
-  eventData:any[]=[]
+  chartData: any;
+  chartOptions: any;
+  currentUserId: string;
+  eventData: any[] = [];
+  ticketData: any[] = [];
   selectedEvent: string | undefined;
-
+  @HostBinding('class') themeClass = 'light-theme';
 
   constructor(
-    private service:AuthserviceService
-    ,private router:ActivatedRoute,
+    private service: AuthserviceService,
+    private router: ActivatedRoute,
     private route: Router
-  ){}
-
-  options: any;
-  @HostBinding('class') themeClass = 'light-theme'; 
-
+  ) {}
 
   ngOnInit() {
-    this.maps()
-    this.currentUserId=this.service.getUserFromLocalStorage();
+    this.currentUserId = this.service.getUserFromLocalStorage();
 
-    this.service.getAllEventsReport(this.currentUserId).subscribe((data)=>{
-     this.eventData = data;
-     console.log(this.eventData);
-    })
-    
+    this.service.getAllEventsReport(this.currentUserId).subscribe((data) => {
+      this.eventData = data;
+      console.log(this.eventData);
+    });
+
+    this.service.getReportData(this.currentUserId).subscribe((data) => {
+      this.ticketData = data;
+      console.log(this.ticketData);
+    });
+
+    this.initializeChart();
   }
-
 
   onEventChange(event: any): void {
     this.selectedEvent = event.target.value;
     console.log('Selected Event ID:', this.selectedEvent);
-    this.onSubmit();
-  }
-  onSubmit(): void {
-    console.log('Selected Event:', this.selectedEvent);
-    
+    this.updateChart();
   }
 
+  updateChart(): void {
+    if (this.selectedEvent) {
+      const filteredTickets = this.ticketData.filter(ticket => ticket.eventSetup.id === this.selectedEvent);
+      const ticketAmounts = filteredTickets.map(ticket => parseFloat(ticket.amountOfTicket) || 0);
 
- 
-
-
-  toggleTheme() {
-    this.themeClass = this.themeClass === 'light-theme' ? 'dark-theme' : 'light-theme';
+      this.chartData = {
+        labels: ticketAmounts.map((_, index) => `Ticket ${index + 1}`),
+        datasets: [
+          {
+            label: 'Amount of Tickets',
+            data: ticketAmounts,
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }
+        ]
+      };
+    }
   }
 
-
-
-
-
-
-  maps(){
+  initializeChart() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
-    this.basicData = {
-      labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-      datasets: [
-        {
-          label: 'Sales',
-          data: [540, 325, 702, 620],
-          backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
-          borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
-          borderWidth: 1
-        }
-      ]
-    };
-    
-
-    this.basicOptions = {
+    this.chartOptions = {
       plugins: {
         legend: {
           labels: {
@@ -114,40 +100,9 @@ export class ChartOfEventRabbiterComponent implements OnInit {
         }
       }
     };
-    this.data = {
-        datasets: [
-            {
-                data: [11, 16, 7, 3, 14],
-                backgroundColor: [
-                    documentStyle.getPropertyValue('--red-500'),
-                    documentStyle.getPropertyValue('--green-500'),
-                    documentStyle.getPropertyValue('--yellow-500'),
-                    documentStyle.getPropertyValue('--bluegray-500'),
-                    documentStyle.getPropertyValue('--blue-500')
-                ],
-                label: 'My dataset'
-            }
-        ],
-        labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue']
-    };
-    
-    this.options = {
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        },
-        scales: {
-            r: {
-                grid: {
-                    color: surfaceBorder
-                }
-            }
-        }
-    };
+  }
 
-
+  toggleTheme() {
+    this.themeClass = this.themeClass === 'light-theme' ? 'dark-theme' : 'light-theme';
   }
 }
