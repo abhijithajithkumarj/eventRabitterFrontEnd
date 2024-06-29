@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { UserProfile } from '../../core/models/userProfile';
-import { AuthserviceService } from '../../core/service/auth/authservice.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { __param } from 'tslib';
+
+
+import { UserProfile } from '../../core/models/userProfile';
+import { AuthserviceService } from '../../core/service/auth/authservice.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -76,11 +78,7 @@ throw new Error('Method not implemented.');
         console.error('Error fetching user profile:', error);
       }
     );
-
-
   }
-
-
 
 
 

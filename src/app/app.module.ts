@@ -61,6 +61,7 @@ import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/eve
 import { ImageAddMainPageComponent } from './mainpage/image-add-main-page/image-add-main-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PaginationComponent } from './pages/reuse/pagination/pagination.component';
+import { WalletComponent } from './pages/reuse/wallet/wallet.component';
 
 
 
@@ -107,6 +108,7 @@ import { PaginationComponent } from './pages/reuse/pagination/pagination.compone
     EventWebGuidelinesComponent,
     ImageAddMainPageComponent,
     PaginationComponent,
+    WalletComponent,
 
    
   ],

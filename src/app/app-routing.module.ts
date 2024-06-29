@@ -29,6 +29,7 @@ import { EventBookingPageCardsComponent } from './pages/event-booking-page-cards
 import { ChartOfEventRabbiterComponent } from './pages/chart-of-event-rabbiter/chart-of-event-rabbiter.component';
 import { EventWebGuidelinesComponent } from './mainpage/event-web-guidelines/event-web-guidelines.component';
 import { AuthGuard } from './core/routerGuard/AuthGuard';
+import { WalletComponent } from './pages/reuse/wallet/wallet.component';
 
 const routes: Routes =
 [
@@ -61,6 +62,7 @@ const routes: Routes =
   {path:'eventTicketPlace',component:EventBookingPageCardsComponent},
   {path:'eventChart',component:ChartOfEventRabbiterComponent},
   {path:'eventwebGuidelines',component:EventWebGuidelinesComponent},
+  {path:'wallet',component:WalletComponent},
   
 ];
 

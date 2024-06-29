@@ -363,6 +363,8 @@ export class AuthserviceService {
     return this.http.get<any>(`event-create-booking/get-all-events-report/${creatorId}`);
   } 
 
+ 
+
   setUserIdInLocalStorage(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
   }
