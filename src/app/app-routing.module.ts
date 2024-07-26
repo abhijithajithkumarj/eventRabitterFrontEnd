@@ -63,6 +63,7 @@ const routes: Routes =
   {path:'eventChart',component:ChartOfEventRabbiterComponent},
   {path:'eventwebGuidelines',component:EventWebGuidelinesComponent},
   {path:'wallet',component:WalletComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   
 ];
 
