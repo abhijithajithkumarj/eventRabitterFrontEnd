@@ -57,7 +57,14 @@ export class NavigationComponent implements OnInit {
   }
 
   eventCard() {
-    this.router.navigateByUrl('eventTicketPlace');
+    if (this.service.getTokenLocalStorage()) {
+      this.router.navigateByUrl('eventTicketPlace');
+    } else {
+      this.router.navigateByUrl('login');
+    }
+    this.service.gerUserDataForEventCreate().subscribe((data) => {
+      console.log(data);
+    });
   }
 
   eventHome() {

@@ -39,6 +39,18 @@ export class CarouselComponent {
     });
   }
 
+  shopPage() {
+    if (this.service.getTokenLocalStorage()) {
+      this.router.navigateByUrl('eventTicketPlace');
+    } else {
+      this.router.navigateByUrl('login');
+    }
+    this.service.gerUserDataForEventCreate().subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+
 
   
 
