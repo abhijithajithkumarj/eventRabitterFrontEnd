@@ -8,10 +8,7 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'eventRabitterFrontEnd';
-
-
   showNavigation = true;
-
   constructor(private router: Router) {}
 
   ngOnInit() {
