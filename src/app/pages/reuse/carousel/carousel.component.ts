@@ -28,16 +28,7 @@ export class CarouselComponent {
   }
 
 
-  eventCreat() {
-    if (this.service.getTokenLocalStorage()) {
-      this.router.navigateByUrl('eventType');
-    } else {
-      this.router.navigateByUrl('login');
-    }
-    this.service.gerUserDataForEventCreate().subscribe((data) => {
-      console.log(data);
-    });
-  }
+
 
   shopPage() {
     if (this.service.getTokenLocalStorage()) {
@@ -51,6 +42,17 @@ export class CarouselComponent {
   }
 
 
+
+  eventCreat() {
+    if (this.service.getTokenLocalStorage()) {
+      this.router.navigateByUrl('eventType');
+    } else {
+      this.router.navigateByUrl('login');
+    }
+    this.service.gerUserDataForEventCreate().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   
 
